@@ -1,0 +1,132 @@
+<nb-card *ngIf="!isAddingConcept" class="card">
+  <nb-card-header class="card-title header-flex">
+    <div class="title-text">GIFTS</div>
+    <div class="right-controls">
+      <select>
+        <option value="1">Entrega Kits De Cubiertos - 2025</option>
+      </select>
+      <button class="btn-add" (click)="toggleConceptMode()">Add Concept ⚙️</button>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="grid-container">
+      <!-- Imagen del empleado -->
+      <div class="image-container">
+        <img src=" " alt="Foto del empleado" class="avatar" />
+      </div>
+
+      <!-- EmployeeID -->
+      <div class="form-group">
+        <label>EmployeeId</label>
+        <input nbInput placeholder="Escanear el número de empleado" fullWidth [(ngModel)]="employeeId" (input)="loadEmployeeData()" />
+      </div>
+
+      <!-- Nombre -->
+      <div class="form-group-1">
+        <label>Nombre del empleado</label>
+        <input nbInput fullWidth [value]="employeeName" disabled />
+      </div>
+
+      <!-- Supervisor -->
+      <div class="form-group-1">
+        <label>Supervisor</label>
+        <input nbInput fullWidth [value]="supervisor" disabled />
+      </div>
+
+      <!-- Área -->
+      <div class="form-group-1">
+        <label>Área</label>
+        <input nbInput fullWidth [value]="area" disabled />
+      </div>
+
+      <!-- Tamaño -->
+      <div class="form-group-1">
+        <label>Tamaño</label>
+        <input nbInput fullWidth [value]="size" disabled />
+      </div>
+
+      <!-- Turno -->
+      <div class="form-group-1">
+        <label>Turno</label>
+        <input nbInput fullWidth [value]="shift" disabled />
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+
+
+
+<nb-card *ngIf="isAddingConcept" class="card">
+  <nb-card-header class="card-title header-flex">
+    <div class="titulo-container">
+      <div class="title-text">GIFTS</div>
+      <div class="right-controls">
+      <button class="btn-add" (click)="toggleConceptMode()">Hide Concept Form</button>
+
+    </div>
+    </div>
+  </nb-card-header>
+
+  <nb-card-body>
+    <div class="concept-wrapper">
+      
+      <!-- Tabla de conceptos -->
+       <nb-card class="concept-table">
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>CONCEPT NAME</th>
+              <th>DESCRIPTION</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let concept of concepts">
+              <td>{{ concept.name }}</td>
+              <td>
+                {{ concept.description }}<br />
+                <small>
+                  Start date: {{ concept.startDate | date:'short' }}.
+                  Finish date: {{ concept.endDate | date:'short' }}
+                </small>
+              </td>
+              <td>
+                <button nbButton size="tiny" status="info">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </nb-card>
+
+      <!-- Formulario de concepto -->
+       <nb-card class="concept-table">
+      <div>
+        <label>Name:</label>
+        <input nbInput fullWidth [(ngModel)]="concept.name" />
+
+        <label>Description:</label>
+        <textarea nbInput fullWidth [(ngModel)]="concept.description"></textarea>
+
+        <div class="form-row">
+          <div class="form-col">
+            <label>Start Date:</label>
+            <input nbInput type="datetime-local" [(ngModel)]="concept.startDate" fullWidth />
+          </div>
+          <div class="form-col">
+            <label>End Date:</label>
+            <input nbInput type="datetime-local" [(ngModel)]="concept.endDate" fullWidth />
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button nbButton status="danger" (click)="cancelConcept()">Cancel</button>
+          <button nbButton status="success" (click)="saveConcept()">Save</button>
+        </div>
+      </div>
+    </nb-card>
+    </div>
+  </nb-card-body>
+</nb-card>

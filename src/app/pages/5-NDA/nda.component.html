@@ -1,0 +1,80 @@
+<nb-card class="card">
+  <nb-card-header class="titulo">
+      <div class="titulo-container">
+      <div class="titulo">NDA</div>
+    </div>
+    </nb-card-header>
+  
+  <nb-card-body>
+
+    <div class="container-flex">
+
+      <!-- Companies -->
+      <nb-card class="card-section card-purple">
+        <nb-card-header>
+          <nb-icon icon="briefcase-outline"></nb-icon>
+          <strong>Companies</strong>
+        </nb-card-header>
+        <nb-card-body>
+          <button nbButton status="primary">+ Add company</button>
+          <br /><br />
+          <button nbButton size="small">Reload</button>
+          <label>
+            Show 
+            <select>
+              <option>10</option>
+              <option>25</option>
+              <option>50</option>
+            </select> entries
+          </label>
+          <input class="search-input" type="text" placeholder="Search:" />
+          <table class="table">
+            <thead>
+              <tr><th>COMPANY NAME</th></tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="1" style="text-align: center;">No data available in table</td></tr>
+            </tbody>
+          </table>
+          <p>Showing 0 to 0 of 0 entries</p>
+        </nb-card-body>
+      </nb-card>
+
+      <!-- Company People -->
+      <nb-card class="card-section card-teal">
+        <nb-card-header>
+          <nb-icon icon="people-outline"></nb-icon>
+          <strong>Company people</strong>
+        </nb-card-header>
+        <nb-card-body>
+          <button nbButton status="info">+ Add company people</button>
+          <br /><br />
+          <button nbButton size="small">Reload</button>
+          <label>
+            Show 
+            <select>
+              <option>10</option>
+              <option>25</option>
+              <option>50</option>
+            </select> entries
+          </label>
+          <input class="search-input" type="text" placeholder="Search:" />
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Person name</th>
+                <th>Company</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="2" style="text-align: center;">No data available in table</td></tr>
+            </tbody>
+          </table>
+          <p>Showing 0 to 0 of 0 entries</p>
+        </nb-card-body>
+      </nb-card>
+
+    </div>
+
+  </nb-card-body>
+</nb-card>

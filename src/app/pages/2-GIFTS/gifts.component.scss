@@ -1,0 +1,213 @@
+.nb-card-body {
+  text-align: left;
+}
+.concept-table{
+  box-sizing: border-box;
+  background: linear-gradient(to bottom right, #fff, #fff); /* Fondo con leve gradiente */
+  border-radius: 15px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important; /* Sombra suave y difusa */
+  border: 1px solid #e0e0e0; /* Borde sutil */
+  border-top: 4px solid #000 !important;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card{
+  box-sizing: border-box;
+  background: linear-gradient(to bottom right, #fff, #fff); /* Fondo con leve gradiente */
+  border-radius: 30px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important; /* Sombra suave y difusa */
+  border: 1px solid #e0e0e0; /* Borde sutil */
+  border-top: 4px solid #5f7 !important;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card-title {
+  background-color: transparent!important;
+  color: #f00 !important;
+  font-size: 20px !important;
+  padding: 10px 15px 0 15px;
+  
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.right-controls select {
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+}
+
+.btn-add {
+  background-color: #3366FF;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-add:hover{
+  background-color: #5f7;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 220px repeat(3, 1fr);
+  gap: 24px 16px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+.image-container {
+  grid-row: span 2;
+}
+
+.avatar {
+  width: 100%;
+  min-width: 180px;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+  padding: 2px;
+  border: 1px solid transparent;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+.form-group-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+}
+.form-group-1 label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.form-group-1 input{
+  background-color: #3333 !important;
+}
+
+.inp-inf {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #f8f9fa;
+  transition: border-color 0.3s;
+}
+
+.inp-inf:focus {
+  border-color: #3366FF;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.concept-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.concept-wrapper nb-card {
+  flex: 1;
+  min-width: 400px;
+}
+
+.concept-table {
+  padding: 1rem;
+}
+
+.concept-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.table th,
+.table td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f7f7f7;
+}
+.card-title.header-flex .titulo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card-title.header-flex .title-text {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.card-title.header-flex .right-controls {
+  display: flex;
+  align-items: center;
+}
+
+.btn-add {
+  margin-left: 10px;
+}

@@ -1,0 +1,63 @@
+<nb-card class="card">
+
+
+<nb-card class="card1">
+  <nb-card-header class="titulo">
+    <div class="titulo-container">
+      <div class="titulo">EMPLOYEES</div>
+      <button class="btn-add">+ Add Employee</button>
+    </div>
+  </nb-card-header>
+  <nb-card-body class="body">
+    <div class="top-controls">
+      <!-- Otros botones -->
+      <button class="btn-1">Copy</button>
+      <button class="btn-1">Excel</button>
+      <button class="btn-1">CSV</button>
+      <button class="btn-1">PDF</button>
+      <label class="s-e">Show
+      <select>
+        <option value="10">10</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="All">All</option>
+      </select>
+      entries</label>
+  
+      <!-- Label e input alineados a la derecha -->
+      <div class="search-container">
+        <label for="search" class="label-inline">Search:</label>
+        <input type="text" id="search" class="input-inline" placeholder="Search">
+      </div>
+    </div>
+  </nb-card-body>
+  
+</nb-card>
+
+<nb-tabset>
+  <nb-tab tabTitle="Employees">
+      <div class="table-container"  nbSppinerStatus="primary" nbSpinnerSize="giant">
+      <div class="table-wrapper">
+      </div>
+      <table class="table">
+              <thead>
+                <tr>
+                  <th>#EMP</th>
+                  <th>NAME</th>
+                  <th>DETAILS</th>
+                  <th>SHIFT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="6" style="text-align: center;">No data available in table</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Showing 0 to 0 of 0 entries</p>
+      <!--[nbSpinner]="loading"
+      <ng2-smart-table [settings]="BulletinQA" [source]="sourceTab" class="Tabla"></ng2-smart-table>-->
+    </div>     
+  </nb-tab>
+</nb-tabset>
+</nb-card>

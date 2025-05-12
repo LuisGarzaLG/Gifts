@@ -1,0 +1,119 @@
+<nb-card class="gift">
+  <nb-tabset>
+    <nb-tab tabTitle="GIFTS">
+      <div class="form-section">
+        <div class="inputs-row">
+          <nb-select placeholder="Select a concept">
+            <nb-option *ngFor="let concept of concepts" [value]="concept">{{ concept }}</nb-option>
+          </nb-select>
+
+          <input nbInput fullWidth placeholder="Start date" type="date">
+          <input nbInput fullWidth placeholder="Finish date" type="date">
+        </div>
+
+        <div class="button-row">
+          <button nbButton status="primary">Search</button>
+          <button nbButton status="success">Search all</button>
+        </div>
+
+        <div class="table-controls">
+          <div class="left-controls">
+            <button class="btn-1" size="small">Copy</button>
+            <button class="btn-1" size="small">Excel</button>
+            <button class="btn-1" size="small">CSV</button>
+            <button class="btn-1" size="small">PDF</button>
+            <button class="btn-1" size="small">Reload</button>
+
+            <label class="entries-label">Show
+              <select>
+                <option>12</option>
+                <option>25</option>
+                <option>50</option>
+              </select>
+              entries
+            </label>
+          </div>
+          <div >
+            <label for="search" class="label-inline">Search: </label>
+            <input type="text" id="search" class="input-inline" placeholder="Search">
+          </div>
+        </div>
+        <nb-card class="table">
+          <nb-card-body>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#EMP</th>
+                  <th>NAME</th>
+                  <th>CONCEPT</th>
+                  <th>SHIFT</th>
+                  <th>DATE</th>
+                  <th>DELIVERED BY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="6" style="text-align: center;">No data available in table</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Showing 0 to 0 of 0 entries</p>
+          </nb-card-body>
+        </nb-card>
+
+
+      </div>
+    </nb-tab>
+
+    <nb-tab tabTitle="OVER TIME">
+      <div class="table-controls">
+          <div class="left-controls">
+            <button class="btn-1" size="small">Copy</button>
+            <button class="btn-1" size="small">Excel</button>
+            <button class="btn-1" size="small">CSV</button>
+            <button class="btn-1" size="small">PDF</button>
+            <button class="btn-1" size="small">Reload</button>
+
+            <label class="entries-label">Show
+              <select>
+                <option>12</option>
+                <option>25</option>
+                <option>50</option>
+              </select>
+              entries
+            </label>
+          </div>
+          <div >
+            <label for="search" class="label-inline">Search: </label>
+            <input type="text" id="search" class="input-inline" placeholder="Search">
+          </div>
+        </div>
+        <nb-card class="table">
+          <nb-card-body class="body-1">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#EMP</th>
+                  <th>NAME</th>
+                  <th>CONCEPT</th>
+                  <th>SHIFT</th>
+                  <th>DATE</th>
+                  <th>DELIVERED BY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="6" style="text-align: center;">No data available in table</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Showing 0 to 0 of 0 entries</p>
+          </nb-card-body>
+        </nb-card>
+
+
+
+
+    </nb-tab>
+  </nb-tabset>
+</nb-card>
