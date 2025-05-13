@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from './providers/services/security/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { qualityrequestsprovaider } from './providers/services/Gifts request/Giftsrequestsprovaider';
+import { giftsrequestsprovaider } from './providers/services/Gifts request/Giftsrequestsprovaider';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
   // Agregar logo
 logo = '/assets/images/landisGyr_1.png'
-  constructor (private authService: AuthService, private router: Router, private provider: qualityrequestsprovaider) {}
+  constructor (private authService: AuthService, private router: Router, private provider: giftsrequestsprovaider) {}
  username = '';
   ngOnInit(): void {
     
