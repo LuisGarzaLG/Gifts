@@ -9,10 +9,12 @@
     </nb-card-header>
     <nb-card-body class="body">
       <div class="top-controls">
-        <button class="btn-1">Copy</button>
-        <button class="btn-1">Excel</button>
-        <button class="btn-1">CSV</button>
-        <button class="btn-1">PDF</button>
+        <button class="btn-1" (click)="copyTable()">Copy</button>
+        <button class="btn-1" (click)="downloadExcel()">Excel</button>
+
+        <button class="btn-1" (click)="downloadCSV()">CSV</button>
+        <button class="btn-1" (click)="downloadPDF()">PDF</button>
+
         <label class="s-e">Show
           <select [(ngModel)]="entriesPerPage" (change)="onEntriesPerPageChange()">
             <option [ngValue]="10">10</option>
