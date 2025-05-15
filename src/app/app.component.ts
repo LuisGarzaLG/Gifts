@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from './providers/services/security/auth.service';
-import { Router } from '@angular/router';
+import { DefaultUrlSerializer, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { giftsrequestsprovaider } from './providers/services/Gifts request/Giftsrequestsprovaider';
+
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
   isLoggedIn: boolean =  false;
   isAuthenticated = false;
   GownChangeCount: number = 0;
+  user: string = ''
   private authSubscription!: Subscription;
 
   menuItems: any[] = [];
@@ -29,33 +31,39 @@ logo = '/assets/images/landisGyr_1.png'
   constructor (private authService: AuthService, private router: Router, private provider: giftsrequestsprovaider) {}
  username = '';
   ngOnInit(): void {
-    
+
 
       this.menuItems = [
-        
         {
           title: 'EMPLOYEES',
-          icon: 'file-add-outline',
+          icon: 'people-outline',
           link: '/pages/employees',
         },
         {
           title: 'GIFTS',
-          icon: 'file-text-outline',
-          link: '/pages/gifts',
-        },
-        {
-          title: 'OVER TIME',
-          icon: 'file-remove-outline',
-          link: '/pages/overtime',
-        },
+          icon:'list-outline',
+          children:[
+          {
+            title: 'GIFT',
+            icon: 'gift-outline',
+            link: '/pages/gifts',
+          },
+          {
+            title: 'CONCEPTS',
+            icon: 'file-add-outline',
+            link: '/pages/concepts',
+          },
+          
+          ]
+        },        
         {
           title: 'REPORT',
-          icon: 'printer-outline',
+          icon: 'file-text-outline',
           link: '/pages/reports'
         },
         {
           title: 'NDA',
-          icon: 'printer-outline',
+          icon: 'folder-add-outline',
           link: '/pages/nda'
         },
       ];

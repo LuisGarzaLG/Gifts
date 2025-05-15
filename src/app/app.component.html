@@ -1,42 +1,27 @@
 <nb-layout>
-<nb-layout-header fixed>
+  <nb-layout-header fixed>
     <div class="header-container">
-
-      <!-- Agrupación del título y el logo -->
       <div class="header-left">
         <span class="header-title" (click)="toggleSidebar()">E-RH</span>
         <img [src]="logo" alt="Landis+Gyr" class="img-logo" (click)="navigateToEmployees()" />
-      </div>
-<!--
-      <nb-actions size="medium" class="user-actions">
-        <nb-action>
-          <span>{{ currentUserName }}</span>
-        </nb-action>
-        <nb-action (click)="navigateToLogin()">
-          <nb-icon icon="person-outline" [style.color]="'white'"></nb-icon>
-        </nb-action>
-      </nb-actions>
 
-      -->
+      </div>
     </div>
   </nb-layout-header>
 
   <nb-sidebar tag="menu-sidebar" [state]="isSidebarExpanded ? 'expanded' : 'collapsed'" class="custom-sidebar">
-    <nb-menu  [items]="menuItems"></nb-menu>
-    <div class="sidebar-note">
-    </div>
-    
+    <nb-menu [items]="menuItems"></nb-menu>
+    <div class="sidebar-note"></div>
   </nb-sidebar>
-
 
   <nb-layout-column>
     <router-outlet></router-outlet>
   </nb-layout-column>
+
   <nb-layout-footer fixed>
     <div class="footer-content">
       <span class="footer-left">© 2025 Landis+Gyr</span>
       <span class="footer-right">v1.0</span>
     </div>
   </nb-layout-footer>
-  
 </nb-layout>

@@ -1,15 +1,6 @@
 .nb-card-body {
   text-align: left;
 }
-.concept-table{
-  box-sizing: border-box;
-  background: linear-gradient(to bottom right, #fff, #fff); /* Fondo con leve gradiente */
-  border-radius: 15px !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important; /* Sombra suave y difusa */
-  border: 1px solid #e0e0e0; /* Borde sutil */
-  border-top: 4px solid #000 !important;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-}
 
 .card{
   box-sizing: border-box;
@@ -132,82 +123,4 @@
   border-color: #3366FF;
   outline: none;
   background-color: #ffffff;
-}
-
-.concept-wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.concept-wrapper nb-card {
-  flex: 1;
-  min-width: 400px;
-}
-
-.concept-table {
-  padding: 1rem;
-}
-
-.concept-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 1rem;
-}
-
-.form-row {
-  display: flex;
-  gap: 1rem;
-}
-
-.form-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.button-group {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 0.5rem;
-}
-
-.table th,
-.table td {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  text-align: left;
-}
-
-.table th {
-  background-color: #f7f7f7;
-}
-.card-title.header-flex .titulo-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.card-title.header-flex .title-text {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.card-title.header-flex .right-controls {
-  display: flex;
-  align-items: center;
-}
-
-.btn-add {
-  margin-left: 10px;
 }

@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "https://fonts.googleapis.com/css2?family=Material+Symbols+Light",
               "src/styles.scss"
             ],
             "scripts": []

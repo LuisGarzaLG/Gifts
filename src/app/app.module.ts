@@ -11,13 +11,11 @@ import { NbAuthModule, NbAuthService } from '@nebular/auth';
 import { PagesRoutingModule } from './pages/pages-routing.module';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { HttpClientModule } from '@angular/common/http';
-import { AddEmployeeModalComponent } from './pages/1-EMPLOYEES/add-employee-modal/add-employee-modal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddEmployeeModalComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +43,8 @@ import { AddEmployeeModalComponent } from './pages/1-EMPLOYEES/add-employee-moda
     NbAuthModule.forRoot({
       strategies: [],
       forms: {},
-    })
+    }),
+    NbThemeModule.forRoot({ name: 'default' }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [NbAuthService],

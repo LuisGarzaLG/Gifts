@@ -1,0 +1,57 @@
+<nb-card  class="card">
+  <nb-card-header class="card-title header-flex">
+    <div class="title-text">GIFTS</div>
+    <div class="right-controls">
+      <select>
+        <option value="1">Entrega Kits De Cubiertos - 2025</option>
+      </select>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="grid-container">
+      <!-- Imagen del empleado -->
+      <div class="image-container">
+        <img src=" " alt="Foto del empleado" class="avatar" />
+      </div>
+
+      <!-- EmployeeID -->
+      <div class="form-group">
+        <label>EmployeeId</label>
+        <input nbInput placeholder="Escanear el número de empleado" fullWidth [(ngModel)]="employeeId" (input)="loadEmployeeData()" />
+      </div>
+
+      <!-- Nombre -->
+      <div class="form-group-1">
+        <label>Nombre del empleado</label>
+        <input nbInput fullWidth [value]="employeeName" disabled />
+      </div>
+
+      <!-- Supervisor -->
+      <div class="form-group-1">
+        <label>Supervisor</label>
+        <input nbInput fullWidth [value]="supervisor" disabled />
+      </div>
+
+      <!-- Área -->
+      <div class="form-group-1">
+        <label>Área</label>
+        <input nbInput fullWidth [value]="area" disabled />
+      </div>
+
+      <!-- Tamaño -->
+      <div class="form-group-1">
+        <label>Tamaño</label>
+        <input nbInput fullWidth [value]="size" disabled />
+      </div>
+
+      <!-- Turno -->
+      <div class="form-group-1">
+        <label>Turno</label>
+        <input nbInput fullWidth [value]="shift" disabled />
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+
+

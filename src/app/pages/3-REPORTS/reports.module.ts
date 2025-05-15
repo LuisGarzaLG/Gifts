@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OvertimeRoutingModule } from '../3-OVERTIME/overtime-routing.module';
 import { ReportsComponent } from './reports.component';
 import { NbDatepickerModule,NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbSpinnerModule, NbTabsetModule, NbThemeModule, NbToastrModule, NbListModule, NbSelectModule, NbFormFieldModule } from '@nebular/theme';
 
@@ -17,7 +16,6 @@ import { NbDatepickerModule,NbButtonModule, NbCardModule, NbIconModule, NbInputM
     NbFormFieldModule,
     ReactiveFormsModule, 
     CommonModule,
-    OvertimeRoutingModule,
     NbDatepickerModule,
     NbListModule,
     NbThemeModule.forRoot(),

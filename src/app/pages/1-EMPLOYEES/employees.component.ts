@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { giftsrequestsprovaider } from 'src/app/providers/services/Gifts request/Giftsrequestsprovaider';
 import { Employee } from 'src/app/providers/models/gifts-request-all-models';
 import { NbDialogService } from '@nebular/theme';
-import { AddEmployeeModalComponent } from './add-employee-modal/add-employee-modal.component';
 import { NotificationService } from 'src/app/providers/services/notification/notification.service';
 import * as ExcelJS from 'exceljs';
 import * as FileSaver from 'file-saver';
@@ -99,9 +98,6 @@ export class EmployeesComponent implements OnInit {
   this.updateTable();
 }
 
- openAddEmployeeModal() {
-    this.dialogService.open(AddEmployeeModalComponent);
-  }
 
 copyTable() {
   let copyText = '';

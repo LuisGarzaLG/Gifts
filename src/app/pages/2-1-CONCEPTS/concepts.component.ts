@@ -1,32 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-gifts',
-  templateUrl: './gifts.component.html',
-  styleUrls: ['./gifts.component.scss']
+  selector: 'app-concepts',
+  templateUrl: './concepts.component.html',
+  styleUrls: ['./concepts.component.scss']
 })
-export class GiftsComponent {
-  employeePhoto: string = '';  // URL o base64
-  employeeId: string = '';
-  employeeName: string = '';
-  supervisor: string = '';
-  area: string = '';
-  size: string = '';
-  shift: string = '';
+export class ConceptsComponent implements OnInit {
 
-  loadEmployeeData(): void {
-    // Aquí debes cargar los datos reales del empleado con el ID escaneado
-    // Simulamos valores por ahora:
-    this.employeePhoto = '/assets/images/logo.png';
-    this.employeeName = 'John Doe';
-    this.supervisor = 'Jane Smith';
-    this.area = 'Producción';
-    this.size = 'M';
-    this.shift = 'Turno 1';
+  constructor() { }
+
+  ngOnInit(): void {
   }
-
-  isAddingConcept = false;
+isAddingConcept = false;
   concepts = [
     {
       name: 'ASISTENCIA PERFECTA ENERO - ABRIL 2024',
@@ -53,6 +40,4 @@ export class GiftsComponent {
   cancelConcept() {
     this.concept = { name: '', description: '', startDate: '', endDate: '' };
   }
-  
-
 }
