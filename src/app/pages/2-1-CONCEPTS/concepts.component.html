@@ -1,69 +1,76 @@
 <nb-card class="card">
-    <nb-card-header class="card-title header-flex">
-        <div class="titulo-container">
-            <div class="title-text">GIFTS</div>
-            <div class="right-controls">
-            </div>
-        </div>
-    </nb-card-header>
+  <!-- Header -->
+  <nb-card-header class="card-title header-flex">
+    <div class="titulo-container">
+      <div class="title-text">GIFTS</div>
+    </div>
+  </nb-card-header>
 
-<nb-card-body>
-    <div class="concept-wrapper">
-    
-    <!-- Tabla de conceptos -->
-    <nb-card class="concept-table">
-        <div>
+  <!-- Tabs -->
+  <nb-tabset>
+    <!-- TAB 1 -->
+    <nb-tab tabTitle="CONCEPTOS">
+      <nb-card-body>
+        <!-- Tabla de conceptos -->
+        <nb-card class="concept-table">
+          <div>
             <table class="table">
-                <thead>
-                    <tr>
-                        <th>CONCEPT NAME</th>
-                        <th>DESCRIPTION</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
+              <thead>
                 <tr>
-                    <td>Example Name</td>
-                    <td>
+                  <th>CONCEPT NAME</th>
+                  <th>DESCRIPTION</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Example Name</td>
+                  <td>
                     Example description<br />
                     <small>
-                        Start date: 2025-05-15 10:00.<br />
-                        Finish date: 2025-05-15 12:00.
+                      Start date: 2025-05-15 10:00.<br />
+                      Finish date: 2025-05-15 12:00.
                     </small>
-                    </td>
-                    <td>
+                  </td>
+                  <td>
                     <button nbButton size="tiny" status="info">Edit</button>
-                    </td>
+                  </td>
                 </tr>
-                </tbody>
+              </tbody>
             </table>
-        </div>
-    </nb-card>
+          </div>
+        </nb-card>
+      </nb-card-body>
+    </nb-tab>
 
-    <!-- Formulario de concepto -->
-            <nb-card class="concept-table">
-                <div>
-                    <label>Name:</label>
-                    <input nbInput fullWidth />
-                    <label>Description:</label>
-                    <textarea nbInput fullWidth></textarea>
-                <div class="form-row">
-                    <div class="form-col">
-                        <label>Start Date:</label>
-                        <input nbInput type="date" fullWidth />
-                    </div>
-                    <div class="form-col">
-                        <label>End Date:</label>
-                        <input nbInput type="date" fullWidth />
-                    </div>
-                </div>
+    <!-- TAB 2 -->
+    <nb-tab tabTitle="+ ADD CONCEPTS">
+      <nb-card-body>
+        <!-- Formulario de concepto -->
+        <nb-card class="concept-table">
+          <div>
+            <label>Name:</label>
+            <input nbInput fullWidth />
+            <label>Description:</label>
+            <textarea nbInput fullWidth></textarea>
+            <div class="form-row">
+              <div class="form-col">
+                <label>Start Date:</label>
+                <input nbInput type="date" fullWidth />
+              </div>
+              <div class="form-col">
+                <label>End Date:</label>
+                <input nbInput type="date" fullWidth />
+              </div>
+            </div>
 
-                <div class="button-group">
-                    <button nbButton status="danger">Cancel</button>
-                    <button nbButton status="success">Save</button>
-                </div>
-                </div>
-            </nb-card>
-        </div>
-    </nb-card-body>
+            <div class="button-group">
+              <button nbButton status="danger">Cancel</button>
+              <button nbButton status="success">Save</button>
+            </div>
+          </div>
+        </nb-card>
+      </nb-card-body>
+    </nb-tab>
+  </nb-tabset>
 </nb-card>

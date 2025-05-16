@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ConceptsComponent } from './concepts.component';
 import { ConceptsRoutingModule } from './concepts-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbAccordionModule, NbButtonModule, NbCardModule, NbDatepickerModule, NbFormFieldModule, NbIconModule, NbInputModule, NbListModule, NbSelectModule, NbSpinnerModule, NbTabsetModule, NbThemeModule, NbToastrModule, NbToggleModule } from '@nebular/theme';
@@ -8,7 +8,9 @@ import { GiftsRoutingModule } from '../2-0-GIFTS/gifts-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConceptsComponent
+  ],
   imports: [
     CommonModule,
     ConceptsRoutingModule,
@@ -28,7 +30,8 @@ import { GiftsRoutingModule } from '../2-0-GIFTS/gifts-routing.module';
     NbTabsetModule,
     NbSelectModule,
     NbToggleModule,
-    NbToastrModule.forRoot()
+    NbToastrModule.forRoot(),
+    NbTabsetModule 
     
         
     

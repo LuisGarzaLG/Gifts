@@ -7,14 +7,12 @@ import { NbButtonModule, NbCardModule, NbInputModule, NbSpinnerModule, NbToastrM
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ConceptsComponent } from './2-1-CONCEPTS/concepts.component';
 
 
 
 @NgModule({
   declarations: [
-    PagesComponent,
-    ConceptsComponent
+    PagesComponent
   ],
   imports: [
     CommonModule,

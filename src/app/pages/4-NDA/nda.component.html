@@ -6,11 +6,10 @@
     </nb-card-header>
   
   <nb-card-body>
-
-    <div class="container-flex">
-
-      <!-- Companies -->
-      <nb-card class="card-section card-purple">
+<nb-tabset>
+                <nb-tab tabTitle="Companies">
+                   <!-- Companies -->
+                  <nb-card class="card-section card-purple">
         <nb-card-header>
           <nb-icon icon="briefcase-outline"></nb-icon>
           <strong>Companies</strong>
@@ -39,8 +38,9 @@
           <p>Showing 0 to 0 of 0 entries</p>
         </nb-card-body>
       </nb-card>
-
-      <!-- Company People -->
+                </nb-tab>
+                <nb-tab tabTitle="Company People">
+                  <!-- Company People -->
       <nb-card class="card-section card-teal">
         <nb-card-header>
           <nb-icon icon="people-outline"></nb-icon>
@@ -73,8 +73,7 @@
           <p>Showing 0 to 0 of 0 entries</p>
         </nb-card-body>
       </nb-card>
-
-    </div>
-
+      </nb-tab>
+    </nb-tabset>
   </nb-card-body>
 </nb-card>
