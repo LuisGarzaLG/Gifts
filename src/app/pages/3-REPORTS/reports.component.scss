@@ -1,38 +1,83 @@
-.gift{
-    border-top: 4px solid black;
-    border-radius: 20px;
+/* Contenedor principal */
+.gift {
+  border-top: 5px solid #2fbad3; /* rojo vivo */
+  border-radius: 25px;
+  background-color: #ffffff;
+  padding: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+/* Contenedor del título */
+.titulo-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Título */
+.titulo {
+  color: #2fbad3;
+  font-size: 2.4rem;
+  font-weight: 700;
+  padding: 10px 0;
+  user-select: none;
+}
+
+/* Sección del formulario */
 .form-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 1rem;
-  
+  gap: 10px !important;
 }
+
+/* Filas de entrada */
 .inputs-row {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
 }
 
-.inputs-row nb-select,
-.inputs-row input {
-  flex: 1;
-  min-width: 200px;
+.inputs-row label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
 }
 
+.inputs-row select,
+.inputs-row input[type="date"] {
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.inputs-row select:hover,
+.inputs-row input[type="date"]:hover,
+.inputs-row select:focus,
+.inputs-row input[type="date"]:focus {
+  border-color: #2fbad3;
+  outline: none;
+}
+
+/* Fila de botones */
 .button-row {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
 
+/* Controles de la tabla */
 .table-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-top: 0 !important;
 }
 
 .left-controls {
@@ -42,61 +87,207 @@
   gap: 0.75rem;
 }
 
-select{
-  margin: -2px;
-  padding: 10px;
-  border: 1px solid #00000025;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-.entries-label{
-  font-weight: bold;
-  font-size: large;
+.entries-label {
+  font-weight: 600;
+  font-size: 20px;
+  color: #333;
+  padding-top: 15px;
 }
 
-.btn-1{
-  background-color: #999;
-  padding: 10px;
-  border: 1px solid #00000025;
-  border-radius: 10px;
+.entries-label select {
+  margin-left: -5px;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 12px;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-.btn-1:hover{
-  background-color: #99999957 !important;
+  transition: border-color 0.2s ease;
 }
 
+.entries-label select:hover,
+.entries-label select:focus {
+  border-color: #2fbad3;
+  outline: none;
+}
+
+/* Botones */
+.btn-1 {
+  background-color: #6c757d;
+  color: #fff;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+.btn-1:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* Buscador */
 .label-inline {
-  font-size: 16px;
-  font-weight: bold;
-  color: #007bff;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
   white-space: nowrap;
 }
 
 .input-inline {
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  width: 200px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  transition: border-color 0.2s ease;
 }
 
+.input-inline:focus {
+  border-color: #2fbad3;
+  outline: none;
+}
+
+/* Estilo de la tabla */
 .table {
   width: 100%;
-  border-collapse: collapse;
-  border-color: transparent;
-}
-
-.table th,
-.table td {
-  border: 1px solid #ccc;
-  padding: 5px;
-  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  font-size: 1rem;
+  min-width: 600px;
+  border: 0 solid;
 }
 
 .table th {
-  background-color: #f5f5f5;
+  background-color: #2fbad3;
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 12px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
 }
+
+.table td {
+  background-color: #fefefe;
+  padding: 12px;
+  vertical-align: middle;
+  color: #222;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: inset 0 -3px 0 #eee;
+  font-weight: 500;
+}
+
+/* Celdas centradas */
+.content-cell-1 {
+  text-align: center !important;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* Celdas de contenido */
+.content-cell {
+  font-size: 1.1rem;
+  color: #333;
+  position: relative;
+}
+
+/* Detalles secundarios */
+.supervisor,
+.area {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* Sin datos */
+.no-data {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.1rem;
+  color: #999;
+  font-style: italic;
+}
+
+/* Controles de paginación */
+.pagination-controls {
+  margin-top: 12px !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 20px ;
+}
+
+.pagination-controls button {
+  padding: 8px 20px !important; 
+  background-color: #2fbad3 !important;
+  border: none !important;
+  border-radius: 15px !important ;
+  color: #fff !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+  transition: background-color 0.3s ease, transform 0.15s ease !important;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+}
+
+.pagination-controls button:not(:disabled):hover {
+  background-color: #298b9c !important;
+  transform: translateY(-2px) !important;
+}
+
+
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+select, input[type="date"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[status="primary"] {
+  background-color: #007bff;
+  color: white;
+}
+
+button[status="success"] {
+  background-color: #28a745;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+
+
+
+
+
+

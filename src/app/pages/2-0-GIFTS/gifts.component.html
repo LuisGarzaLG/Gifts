@@ -2,16 +2,18 @@
   <nb-card-header class="card-title header-flex">
     <div class="title-text">GIFTS</div>
     <div class="right-controls">
-      <select>
-        <option value="1">Entrega Kits De Cubiertos - 2025</option>
+      <select class="concept-select" [(ngModel)]="selectedConceptId">
+        <option [value]="null" disabled selected>-- Selecciona un concepto --</option>
+        <option *ngFor="let concept of concepts" [value]="concept.id">{{ concept.name }}</option>
       </select>
+
     </div>
   </nb-card-header>
   <nb-card-body>
     <div class="grid-container">
       <!-- Imagen del empleado -->
       <div class="image-container">
-        <img src=" " alt="Foto del empleado" class="avatar" />
+        <img [src]="employeePhoto" alt="Foto del empleado" class="avatar" />
       </div>
 
       <!-- EmployeeID -->

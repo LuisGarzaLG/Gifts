@@ -1,44 +1,64 @@
 <nb-card class="gift">
-  <nb-tabset>
-    <nb-tab tabTitle="GIFTS">
+  <nb-card-header class="titulo">
+      <div class="titulo-container">
+        <div class="titulo">REPORTS</div>
+      </div>
+    </nb-card-header>
       <div class="form-section">
-        <div class="inputs-row">
-          <nb-select placeholder="Select a concept">
-            <nb-option *ngFor="let concept of concepts" [value]="concept">{{ concept }}</nb-option>
-          </nb-select>
+        <div class="inputs-row" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; justify-content: space-between;">
+          
+          <div class="form-group" style="display: flex; flex-direction: column; min-width: 150px;">
+            <label for="concept">Concepto</label>
+            <select id="concept" [(ngModel)]="selectedConcept">
+              <option [value]="null" disabled selected>-- Selecciona un concepto --</option>
+              <option *ngFor="let concept of availableConcepts" [ngValue]="concept">
+                {{ concept }}
+              </option>
+            </select>
+          </div>
 
-          <input nbInput fullWidth placeholder="Start date" type="date">
-          <input nbInput fullWidth placeholder="Finish date" type="date">
+          <div class="form-group" style="display: flex; flex-direction: column; min-width: 150px;">
+            <label for="startDate">Start Date</label>
+            <input id="startDate" nbInput type="date" [(ngModel)]="startDate" (ngModelChange)="onStartDateChange()">
+          </div>
+
+          <div class="form-group" style="display: flex; flex-direction: column; min-width: 150px;">
+            <label for="endDate">End Date</label>
+            <input id="endDate" nbInput type="date" [(ngModel)]="endDate" (ngModelChange)="onEndDateChange()">
+          </div>
+
+          <div class="form-group" style="margin-left: auto; display: flex; gap: 0.5rem;">
+            <button nbButton status="primary" (click)="applyFilters()">Search</button>
+            <button nbButton status="success" (click)="clearFilters()">Search all</button>
+          </div>
         </div>
 
-        <div class="button-row">
-          <button nbButton status="primary">Search</button>
-          <button nbButton status="success">Search all</button>
-        </div>
 
-        <div class="table-controls">
+
+        <div class="table-controls" style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
           <div class="left-controls">
-            <button class="btn-1" size="small">Copy</button>
-            <button class="btn-1" size="small">Excel</button>
-            <button class="btn-1" size="small">CSV</button>
-            <button class="btn-1" size="small">PDF</button>
-            <button class="btn-1" size="small">Reload</button>
+              <button class="btn-1" (click)="copyTable()">Copy</button>
+              <button class="btn-1" (click)="downloadExcel()">Excel</button>
+              <button class="btn-1" (click)="downloadCSV()">CSV</button>
+              <button class="btn-1" (click)="downloadPDF()">PDF</button>
 
-            <label class="entries-label">Show
-              <select>
-                <option>12</option>
-                <option>25</option>
-                <option>50</option>
+<label class="entries-label"> Show Entires</label>
+            <label class="entries-label">
+              <select [(ngModel)]="selectedEntries" >
+                <option *ngFor="let option of entriesOptions" [value]="option">
+                  {{ option === 0 ? 'All' : option }}
+                </option>
               </select>
-              entries
             </label>
           </div>
-          <div >
+
+          <div>
             <label for="search" class="label-inline">Search: </label>
-            <input type="text" id="search" class="input-inline" placeholder="Search">
+            <input type="text" id="search" class="input-inline" placeholder="Search" [(ngModel)]="searchTerm"  (ngModelChange)="onSearchTermChange($event)" style="min-width: 150px;">
           </div>
         </div>
-        <nb-card class="table">
+
+        <nb-card class="table" style="margin-top: 1rem;">
           <nb-card-body>
             <table class="table">
               <thead>
@@ -52,15 +72,41 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr *ngIf="loading">
+                  <td colspan="6" style="text-align: center;">Loading...</td>
+                </tr>
+                <tr *ngIf="!loading && pagedDataWithBorders.length === 0">
                   <td colspan="6" style="text-align: center;">No data available in table</td>
+                </tr>
+                <tr *ngFor="let item of pagedDataWithBorders"
+                    [class.group-start]="item.isGroupStart"
+                    [class.group-end]="item.isGroupEnd"
+                    [class.in-group]="item.isInGroup">
+                  <td class="content-cell-1">{{ item.employeeNumber }}</td>
+                  <td class="content-cell">{{ item.employeeName }}</td>
+                  <td class="content-cell">{{ item.name }}</td>
+                  <td class="content-cell">{{ item.shift }}</td>
+                  <td class="content-cell">{{ item.lastDate | date: 'yyyy-MM-dd HH:mm' }}</td>
+                  <td class="content-cell">{{ item.lastUser }}</td>
                 </tr>
               </tbody>
             </table>
-            <p>Showing 0 to 0 of 0 entries</p>
+            <p>
+              Showing {{ ((currentPage - 1) * selectedEntries) + 1 }}
+              to {{ ((currentPage - 1) * selectedEntries) + pagedDataWithBorders.length }}
+              of {{ filteredReports.length }} entries
+            </p>
+
+            <div class="pagination-controls">
+            <button (click)="changePage('prev')" [disabled]="currentPage === 1">Previous</button>
+            <button (click)="changePage('next')" [disabled]="currentPage === totalPages">Next</button>
+
+            </div>
+            
+
+
+
           </nb-card-body>
         </nb-card>
       </div>
-    </nb-tab>
-  </nb-tabset>
 </nb-card>

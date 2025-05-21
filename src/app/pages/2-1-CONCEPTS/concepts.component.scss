@@ -1,4 +1,3 @@
-
 .concept-wrapper {
   display: flex;
   flex-direction: row;
@@ -9,10 +8,17 @@
 
 .concept-wrapper nb-card {
   flex: 1;
-  min-width: 400px;
+  min-width: 300px; /* para mejor responsividad en móviles */
 }
 
 .concept-table {
+  box-sizing: border-box;
+  background: linear-gradient(to bottom right, #fff, #fff); /* Fondo con leve gradiente */
+  border-radius: 15px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important; /* Sombra suave y difusa */
+  border: 1px solid #e0e0e0; /* Borde sutil */
+  border-top: 4px solid #000 !important;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
   padding: 1rem;
 }
 
@@ -36,8 +42,9 @@
 
 .button-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-top: 1rem;
+  gap: 10px;
 }
 
 .table {
@@ -45,17 +52,72 @@
   border-collapse: collapse;
   margin-top: 0.5rem;
 }
+.pages {
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #4bdb68;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-.table th,
+.pages:hover {
+  background-color: #4bdb68;
+  color: white;
+  cursor: pointer;
+}
+
+.active-page {
+  background-color: #4bdb68 !important;
+  color: white !important;
+  border-color: #4bdb68 !important;
+}
+
+.edit{
+  padding: 10px !important;
+}
 .table td {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  text-align: left;
+  background-color: #fefefe;
+  padding: 0 0 10px 0;
+  vertical-align: middle;
+  color: #222;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: inset 0 -3px 0 #eee;
+  font-weight: 500;
+  font-family: arial;
 }
 
 .table th {
-  background-color: #f7f7f7;
+  background-color: #4bdb68;
+  color: #fff;
+  font-weight: 700;
+  padding: 8px;
+  font-size: 22px;
+  text-transform: uppercase;
+  text-align: left;
+  user-select: none;
+  
 }
+.content-cell-1 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  text-align: left;
+}
+.content-cell{
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  vertical-align: top !important;
+  padding: 0 20px !important;
+}
+
+.fecha{
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: 500 !important;
+  color: #6c757d !important;
+  font-style: italic;
+}
+
 .card-title.header-flex .titulo-container {
   display: flex;
   justify-content: space-between;
@@ -64,10 +126,6 @@
   padding: 5px 0;
 }
 
-.card-title.header-flex .title-text {
-  font-weight: bold;
-  font-size: 20px;
-}
 
 .card-title.header-flex .right-controls {
   display: flex;
@@ -77,7 +135,8 @@
 .btn-add {
   margin-left: 10px;
 }
-.card{
+
+.card {
   box-sizing: border-box;
   background: linear-gradient(to bottom right, #fff, #fff); /* Fondo con leve gradiente */
   border-radius: 30px !important;
@@ -85,23 +144,127 @@
   border: 1px solid #e0e0e0; /* Borde sutil */
   border-top: 4px solid #5f7 !important;
   transition: box-shadow 0.3s ease, transform 0.2s ease;
+  padding: 15px 0;
 }
 
 .card-title {
   background-color: transparent!important;
-  color: #f00 !important;
-  font-size: 20px !important;
-  padding: 10px 15px 0 15px;
-  
-  letter-spacing: 1.5px;
+  color: #4bdb68 !important;
+  font-size: 2.4rem !important;
+  padding: 10px 20px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
   text-transform: uppercase;
 }
-.concept-table{
-  box-sizing: border-box;
-  background: linear-gradient(to bottom right, #fff, #fff); /* Fondo con leve gradiente */
-  border-radius: 15px !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important; /* Sombra suave y difusa */
-  border: 1px solid #e0e0e0; /* Borde sutil */
-  border-top: 4px solid #000 !important;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+.concept-name{
+    padding: 0 10px 10px;
+    font-size: 24px;
+    color: #0f7724;
+    letter-spacing: 1.5px;
+}
+/* Estilo general para etiquetas */
+label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f7724;
+  margin-bottom: 6px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+/* Estilo para todos los inputs y textareas */
+input[nbInput], textarea[nbInput] {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Efecto al enfocar */
+input[nbInput]:focus, textarea[nbInput]:focus {
+  border-color: #4bdb68;
+  box-shadow: 0 0 6px rgba(75, 219, 104, 0.5);
+  outline: none;
+}
+
+/* Ajustes para textarea */
+textarea[nbInput] {
+  resize: vertical;
+  min-height: 80px;
+}
+
+
+
+/* Contenedor general de controles */
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+      margin-bottom: -8px !important; 
+  padding: 0.5rem 0;
+}
+
+/* Estilo para el bloque "Show entries" */
+.entires {
+  font-size: 15px;
+  color: #0f7724;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Estilo para el select */
+.entires select {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #333;
+  outline: none;
+}
+
+.entires select:focus {
+  border-color: #4bdb68;
+  box-shadow: 0 0 6px rgba(75, 219, 104, 0.4);
+}
+
+/* Estilo para el bloque "Search" */
+.search {
+  font-size: 15px;
+  color: #0f7724;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Input de búsqueda */
+.search input[type="text"] {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #333;
+  width: 200px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.search input[type="text"]:focus {
+  border-color: #4bdb68;
+  box-shadow: 0 0 6px rgba(75, 219, 104, 0.4);
+  outline: none;
 }

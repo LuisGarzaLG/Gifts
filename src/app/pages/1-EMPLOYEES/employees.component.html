@@ -3,14 +3,12 @@
     <nb-card-header class="titulo">
       <div class="titulo-container">
         <div class="titulo">EMPLOYEES</div>
-
       </div>
     </nb-card-header>
     <nb-card-body class="body">
       <div class="top-controls">
         <button class="btn-1" (click)="copyTable()">Copy</button>
         <button class="btn-1" (click)="downloadExcel()">Excel</button>
-
         <button class="btn-1" (click)="downloadCSV()">CSV</button>
         <button class="btn-1" (click)="downloadPDF()">PDF</button>
 
@@ -31,8 +29,7 @@
     </nb-card-body>
   </nb-card>
 
-  <nb-tabset>
-    <nb-tab tabTitle="Employees">
+    
       <div class="table-container" nbSppinerStatus="primary" nbSpinnerSize="giant">
         <div class="table-wrapper">
           <table class="table">
@@ -69,6 +66,4 @@
           </div>
         </div>
       </div>
-    </nb-tab>
-  </nb-tabset>
 </nb-card>

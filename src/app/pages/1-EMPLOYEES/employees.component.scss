@@ -1,253 +1,235 @@
+/* Card principal */
 .card {
-  border-top: 4px solid #000 !important;
-  border-radius: 30px !important;
-  background-color: #fff;
+  border-top: 5px solid #d32f2f; /* rojo vivo */
+  border-radius: 25px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+  padding: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.body{
+    flex: 1 !important;
+    -ms-flex: 1 1 auto !important;
+    overflow: auto !important;
+    padding: 10px 20px 0 20px !important;
+    position: relative !important;
+}
+/* Card interna sin borde */
 .card1 {
-  background-color: transparent !important;
-  border: 1px solid transparent !important;
-  box-sizing: border-box;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-  margin-bottom: 0 !important;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 0;
+  box-shadow: none;
 }
 
+/* Contenedor del título */
 .titulo-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 15px;
 }
 
+/* Título */
 .titulo {
-  color: red !important;
-  font-size: 30px !important;
-  font-weight: bold !important;
-  padding:10px !important;
-  background-color: transparent !important;
+  color: #d32f2f;
+  font-size: 2.4rem;
+  font-weight: 700;
+  padding: 10px 0;
+  user-select: none;
 }
 
-.btn-add {
-  background-color: #26dc4f;
-  color: #fff;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-.btn-add:hover {
-  background-color: #269b41;
-}
-
+/* Botones principales */
 .btn-1 {
-  background-color: #999;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #00000025;
-  border-radius: 10px;
+  background-color: #6c757d;
+  color: #fff;
+  margin: 0 8px 8px 0;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-.btn-1:hover {
-  background-color: #99999957 !important;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 0.15);
+  transition: background-color 0.3s ease, transform 0.15s ease;
 }
 
+.btn-1:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* Selector de entradas */
 .s-e {
-  font-weight: bold;
-  font-size: large;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-left: 10px;
 }
 
 select {
-  margin: -2px;
-  padding: 10px;
-  border: 1px solid #00000025;
-  border-radius: 10px;
+  margin-left: 5px;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 12px;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 16px;
+  transition: border-color 0.2s ease;
 }
 
+select:hover, select:focus {
+  border-color: #d32f2f;
+  outline: none;
+}
+
+/* Controles superiores */
 .top-controls {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-}
-
-.body {
-  padding-bottom: 0 !important;
-}
-
-.search-container {
-  display: flex;
   align-items: center;
   gap: 10px;
+}
+
+/* Buscador */
+.search-container {
   margin-left: auto;
-  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 280px;
+  flex-grow: 1;
 }
 
 .label-inline {
-  font-size: 16px;
-  font-weight: bold;
-  color: #007bff;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
   white-space: nowrap;
 }
 
 .input-inline {
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  width: 200px;
+  flex-grow: 1;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  transition: border-color 0.2s ease;
 }
 
-nb-tabset {
-  display: block;
-  background-color: #ffffff !important;
-  border-radius: 25px !important;
-  padding: 0 10px 0 10px !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+.input-inline:focus {
+  border-color: #d32f2f;
+  outline: none;
 }
 
+/* Contenedor tabla */
 .table-container {
-  position: relative;
-  width: 100%;
-  padding: 5px 20px 20px 20px;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 0 10px #00000025;
+
+  margin-top: 15px;
+  overflow-x: auto;
 }
 
+/* Wrapper tabla */
 .table-wrapper {
   width: 100%;
-  overflow-x: auto;
-  margin-top: 20px;
 }
 
-@media (max-width: 1910px) {
-  .table-container {
-    padding: 10px;
-  }
-
-  ng2-smart-table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-  }
-
-  .Tabla table {
-    width: 100% !important;
-    display: block;
-    overflow-x: auto;
-  }
-
-  .Tabla th, .Tabla td {
-    white-space: nowrap;
-  }
-}
-
+/* Tabla */
 .table {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  font-size: 1rem;
+  min-width: 600px;
 }
 
-.table th,
-.table td {
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  text-align: left;
-}
-
+/* Encabezados */
 .table th {
-  background-color: #f5f5f5;
-}
-
-/* Nueva clase para Supervisor y Area */
-.supervisor,
-.area {
-  font-size: 0.9rem;
-  color: #6c757d;  /* Gris claro */
-  margin-top: 5px;
-}
-
-.supervisor, .area {
-  font-size: 12px;
-  color: #6c757d;
-}
-
-/* Estilo para la columna 'Details' */
-td div {
-  margin-top: 0px;
-  
-}
-
-.header-cell {
-  background-color: #2f3e46;
-  color: #900;
-  font-weight: bold;
+  background-color: #d32f2f;
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 12px;
+  font-size: 22px;
   text-transform: uppercase;
-  padding: 12px 10px;
-  border-bottom: 2px solid #ccc;
-  text-align: center !important ;
+  text-align: center;
+  user-select: none;
 }
 
-// Estilo para celdas de contenido
+/* Celdas */
+.table td {
+  background-color: #fefefe;
+  padding: 0 0 10px 0;
+  vertical-align: middle;
+  color: #222;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: inset 0 -3px 0 #eee;
+  font-weight: 500;
+}
+
+/* Primera y última columna centrar texto */
+.content-cell-1 {
+  text-align: center !important;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* Columna detalles */
 .content-cell {
-  background-color: #f8f9fa;
-  color: #212529;
-  padding: 10px;
-  vertical-align: top;
-  border-bottom: 1px solid #dee2e6;
-  font-size: 18px;
+  font-size: 1.1rem;
+  color: #333;
+  position: relative;
 }
 
+/* Supervisor y área detalles secundarios */
+.supervisor, .area {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* Sin datos */
 .no-data {
   text-align: center;
+  padding: 20px 0;
+  font-size: 1.1rem;
   color: #999;
   font-style: italic;
 }
-.content-cell-1 {
-  background-color: #f8f9fa;
-  color: #212529;
-  padding: 10px;
-  vertical-align: top;
-  border-bottom: 1px solid #dee2e6;
-  font-size: 18px;
-  text-align: center !important;
+
+/* Párrafo info paginación */
+.table-wrapper > p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #666;
 }
 
-
-
-
-
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
+/* Controles de paginación */
+.pagination-controls {
+  margin-top: 12px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  gap: 20px;
 }
 
-.modal {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  width: 400px;
-  max-width: 90%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.pagination-controls button {
+  padding: 8px 20px;
+  background-color: #d32f2f;
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 0.15);
+  transition: background-color 0.3s ease, transform 0.15s ease;
 }
 
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  margin-top: 1rem;
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.pagination-controls button:not(:disabled):hover {
+  background-color: #b71c1c;
+  transform: translateY(-2px);
 }

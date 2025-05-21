@@ -72,7 +72,7 @@ nb-layout-footer {
   color: white;
   display: flex;
   align-items: center;
-  position: fixed;
+  position: sticky;
   bottom: 0;
   left: 0;
   width: 100vw; // Asegura que use todo el ancho de la ventana

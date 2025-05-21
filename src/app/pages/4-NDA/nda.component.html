@@ -1,78 +1,107 @@
 <nb-card class="card">
   <nb-card-header class="titulo">
-      <div class="titulo-container">
+    <div class="titulo-container">
       <div class="titulo">NDA</div>
     </div>
-    </nb-card-header>
-  
+  </nb-card-header>
+
   <nb-card-body>
-<nb-tabset>
-                <nb-tab tabTitle="Companies">
-                   <!-- Companies -->
-                  <nb-card class="card-section card-purple">
-        <nb-card-header>
-          <nb-icon icon="briefcase-outline"></nb-icon>
-          <strong>Companies</strong>
-        </nb-card-header>
-        <nb-card-body>
-          <button nbButton status="primary">+ Add company</button>
-          <br /><br />
-          <button nbButton size="small">Reload</button>
-          <label>
-            Show 
-            <select>
-              <option>10</option>
-              <option>25</option>
-              <option>50</option>
-            </select> entries
-          </label>
-          <input class="search-input" type="text" placeholder="Search:" />
-          <table class="table">
-            <thead>
-              <tr><th>COMPANY NAME</th></tr>
-            </thead>
-            <tbody>
-              <tr><td colspan="1" style="text-align: center;">No data available in table</td></tr>
-            </tbody>
-          </table>
-          <p>Showing 0 to 0 of 0 entries</p>
-        </nb-card-body>
-      </nb-card>
-                </nb-tab>
-                <nb-tab tabTitle="Company People">
-                  <!-- Company People -->
-      <nb-card class="card-section card-teal">
-        <nb-card-header>
-          <nb-icon icon="people-outline"></nb-icon>
-          <strong>Company people</strong>
-        </nb-card-header>
-        <nb-card-body>
-          <button nbButton status="info">+ Add company people</button>
-          <br /><br />
-          <button nbButton size="small">Reload</button>
-          <label>
-            Show 
-            <select>
-              <option>10</option>
-              <option>25</option>
-              <option>50</option>
-            </select> entries
-          </label>
-          <input class="search-input" type="text" placeholder="Search:" />
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Person name</th>
-                <th>Company</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td colspan="2" style="text-align: center;">No data available in table</td></tr>
-            </tbody>
-          </table>
-          <p>Showing 0 to 0 of 0 entries</p>
-        </nb-card-body>
-      </nb-card>
+    <nb-tabset>
+      <!-- Companies Tab -->
+      <nb-tab tabTitle="Companies">
+        <nb-card class="card-section card-purple card1">
+          <nb-card-header>
+            <nb-icon icon="briefcase-outline"></nb-icon>
+            <strong>Companies</strong>
+          </nb-card-header>
+
+          <nb-card-body>
+            <div class="top-controls">
+              <button nbButton status="primary" class="btn-1">+ Add company</button>
+              <button nbButton size="small" class="btn-1">Reload</button>
+
+              <label class="s-e">
+                Show
+                <select>
+                  <option>10</option>
+                  <option>25</option>
+                  <option>50</option>
+                </select>
+                entries
+              </label>
+
+              <div class="search-container">
+                <label class="label-inline">Search:</label>
+                <input class="input-inline" type="text" placeholder="Search..." />
+              </div>
+            </div>
+
+            <div class="table-container table-wrapper">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Company Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="content-cell-1 no-data" colspan="1">No data available in table</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Showing 0 to 0 of 0 entries</p>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </nb-tab>
+
+      <!-- Company People Tab -->
+      <nb-tab tabTitle="Company People">
+        <nb-card class="card-section card-teal card1">
+          <nb-card-header>
+            <nb-icon icon="people-outline"></nb-icon>
+            <strong>Company People</strong>
+          </nb-card-header>
+
+          <nb-card-body>
+            <div class="top-controls">
+              <button nbButton status="info" class="btn-1">+ Add company people</button>
+              <button nbButton size="small" class="btn-1">Reload</button>
+
+              <label class="s-e">
+                Show
+                <select>
+                  <option>10</option>
+                  <option>25</option>
+                  <option>50</option>
+                </select>
+                entries
+              </label>
+
+              <div class="search-container">
+                <label class="label-inline">Search:</label>
+                <input class="input-inline" type="text" placeholder="Search..." />
+              </div>
+            </div>
+
+            <div class="table-container table-wrapper">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Person Name</th>
+                    <th>Company</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="content-cell-1 no-data" colspan="2">No data available in table</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Showing 0 to 0 of 0 entries</p>
+            </div>
+          </nb-card-body>
+        </nb-card>
       </nb-tab>
     </nb-tabset>
   </nb-card-body>

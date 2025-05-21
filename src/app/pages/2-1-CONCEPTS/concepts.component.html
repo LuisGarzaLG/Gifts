@@ -2,75 +2,135 @@
   <!-- Header -->
   <nb-card-header class="card-title header-flex">
     <div class="titulo-container">
-      <div class="title-text">GIFTS</div>
+      <div class="title-text">GIFTS - CONCEPTS</div>
     </div>
   </nb-card-header>
 
-  <!-- Tabs -->
-  <nb-tabset>
-    <!-- TAB 1 -->
-    <nb-tab tabTitle="CONCEPTOS">
-      <nb-card-body>
-        <!-- Tabla de conceptos -->
-        <nb-card class="concept-table">
-          <div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>CONCEPT NAME</th>
-                  <th>DESCRIPTION</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Example Name</td>
-                  <td>
-                    Example description<br />
-                    <small>
-                      Start date: 2025-05-15 10:00.<br />
-                      Finish date: 2025-05-15 12:00.
-                    </small>
-                  </td>
-                  <td>
-                    <button nbButton size="tiny" status="info">Edit</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </nb-card>
-      </nb-card-body>
-    </nb-tab>
+  <!-- Contenedor en fila -->
+  <nb-card-body class="concept-wrapper">
 
-    <!-- TAB 2 -->
-    <nb-tab tabTitle="+ ADD CONCEPTS">
+    <!-- Conceptos existentes -->
+    <nb-card class="concept-table" style="flex: 1;">
+      <nb-card-header class="concept-name">CONCEPTS</nb-card-header>
       <nb-card-body>
-        <!-- Formulario de concepto -->
-        <nb-card class="concept-table">
-          <div>
-            <label>Name:</label>
-            <input nbInput fullWidth />
-            <label>Description:</label>
-            <textarea nbInput fullWidth></textarea>
-            <div class="form-row">
-              <div class="form-col">
-                <label>Start Date:</label>
-                <input nbInput type="date" fullWidth />
-              </div>
-              <div class="form-col">
-                <label>End Date:</label>
-                <input nbInput type="date" fullWidth />
-              </div>
-            </div>
 
-            <div class="button-group">
-              <button nbButton status="danger">Cancel</button>
-              <button nbButton status="success">Save</button>
-            </div>
+        <!-- Controles de cantidad a mostrar y buscador -->
+        <div class="table-controls" style="display:flex; justify-content: space-between; margin-bottom: 1rem; align-items:center;">
+          <div class="entires">
+            Show
+            <select [(ngModel)]="itemsPerPage" (change)="updatePagination()" style="margin-left: 5px;">
+              <option *ngFor="let n of pageSizes" [value]="n">{{ n }}</option>
+            </select>
+            entries
           </div>
-        </nb-card>
+
+          <div class="search">
+            Search:
+            <input type="text" [(ngModel)]="searchTerm" (input)="filterConcepts()" placeholder="Search concepts..." />
+          </div>
+        </div>
+
+        <!-- Tabla -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>CONCEPT NAME</th>
+              <th>DESCRIPTION</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let concept of pagedConcepts">
+              <td class="content-cell-1">{{ concept.name }}<br />
+                <div class="fecha">Start date: {{ concept.startDate | date: 'yyyy-MM-dd HH:mm' }}</div>
+                <div class="fecha">Finish date: {{ concept.endDate | date: 'yyyy-MM-dd HH:mm' }}</div></td>
+              <td class="content-cell">
+                {{ concept.description }}
+              </td>
+              <td>
+                <button nbButton class="edit" status="info" (click)="editConcept(concept)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+          <p style="margin-bottom: 1rem;">
+            Showing {{ ((currentPage - 1) * itemsPerPage) + 1 }}
+            to {{ ((currentPage - 1) * itemsPerPage) + pagedConcepts.length }}
+            of {{ filteredConcepts.length }} entries
+          </p>
+
+        <!-- Paginación -->
+        <div class="pagination" style="margin-top: 1rem; display:flex; justify-content:center; gap: 10px;">
+          <button nbButton size="tiny" [disabled]="currentPage === 1" (click)="prevPage()">Prev</button>
+          <button nbButton size="tiny"*ngFor="let page of pages"[ngClass]="{'pages': true, 'active-page': currentPage === page}"(click)="goToPage(page)">{{page}} </button>
+          <button nbButton size="tiny" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+        </div>
+
       </nb-card-body>
-    </nb-tab>
-  </nb-tabset>
+    </nb-card>
+
+    <!-- Formulario de nuevo concepto / edición -->
+    <nb-card class="concept-table" style="flex: 1;">
+<nb-card-header  class="concept-name">
+  {{ editingConcept && editingConcept.id ? 'EDIT CONCEPT' : '+ ADD CONCEPT' }}
+</nb-card-header>
+
+<nb-card-body>
+  <!-- Formulario edición -->
+  <div *ngIf="editingConcept && editingConcept.id; else addConceptForm">
+
+    <label>Name:</label>
+    <input nbInput fullWidth [(ngModel)]="editingConcept.name" />
+
+    <label>Description:</label>
+    <textarea nbInput fullWidth [(ngModel)]="editingConcept.description"></textarea>
+
+    <div class="form-row">
+      <div class="form-col">
+        <label>Start Date:</label>
+        <input nbInput type="date" fullWidth [(ngModel)]="startDateStr" />
+      </div>
+      <div class="form-col">
+        <label>End Date:</label>
+        <input nbInput type="date" fullWidth [(ngModel)]="endDateStr" />
+      </div>
+    </div>
+
+    <div class="button-group" style="margin-top: 1rem;">
+      <button nbButton status="danger" (click)="cancelEdit()">Cancel</button>
+      <button nbButton status="success" (click)="saveConcept()">Save</button>
+    </div>
+
+  </div>
+
+  <!-- Formulario nuevo concepto -->
+  <ng-template #addConceptForm>
+    <label>Name:</label>
+    <input nbInput fullWidth [(ngModel)]="newConcept.name" />
+
+    <label>Description:</label>
+    <textarea nbInput fullWidth [(ngModel)]="newConcept.description"></textarea>
+
+    <div class="form-row">
+      <div class="form-col">
+        <label>Start Date:</label>
+        <input nbInput type="date" fullWidth [(ngModel)]="newStartDateStr" />
+      </div>
+      <div class="form-col">
+        <label>End Date:</label>
+        <input nbInput type="date" fullWidth [(ngModel)]="newEndDateStr" />
+      </div>
+    </div>
+
+    <div class="button-group" style="margin-top: 1rem;">
+      <button nbButton status="danger" (click)="cancelAdd()">Cancel</button>
+      <button nbButton status="success" (click)="addNewConcept()">Add</button>
+    </div>
+  </ng-template>
+</nb-card-body>
+
+
+    </nb-card>
+
+  </nb-card-body>
 </nb-card>
