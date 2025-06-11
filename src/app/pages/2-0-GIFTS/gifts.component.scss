@@ -35,15 +35,7 @@
   justify-content: flex-end; /* Empuja el contenido a la derecha */
 }
 
-.concept-select {
-  padding: 0.3rem 0.5rem;
-  border-radius: 5px;
-  font-size: 15px;
-  text-align: right !important;
-  direction: rtl; /* Para alinear el texto a la derecha dentro del select */
-  width: auto; /* Se ajusta automáticamente */
-  max-width: 100%; /* Evita desbordes */
-}
+
 
 
 .btn-add {
@@ -55,6 +47,24 @@
   cursor: pointer;
 }
 .btn-add:hover{
+  background-color: #5f7;
+}
+
+.btn--add {
+  margin: 15px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #3366FF;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn--add:hover{
   background-color: #5f7;
 }
 
@@ -120,7 +130,7 @@ input[nbInput]:focus {
 .form-group label,
 .form-group-1 label {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 20px;
   color: #4b4b4b;
   letter-spacing: 0.3px;
   margin-bottom: 4px;
@@ -151,12 +161,12 @@ input[nbInput][disabled] {
   color: #333;
   transition: all 0.3s ease;
   max-width: 100%;
-  direction: rtl; /* Alineación derecha del texto */
+  text-align: center;
   appearance: none; /* Elimina estilo nativo del navegador */
   background-repeat: no-repeat;
   background-position: calc(100% - 10px) center;
   background-size: 18px;
-  padding-right: 40px;
+  padding-right: 0px;
 }
 
 .concept-select:focus {
@@ -164,4 +174,19 @@ input[nbInput][disabled] {
   background-color: #fff;
   box-shadow: 0 0 6px rgba(75, 219, 104, 0.3);
   outline: none;
+}
+
+
+/* Cuando está en éxito, bordes verdes */
+.input-success input,
+.input-success .avatar {
+  border: 2px solid #00ff00 !important;
+  border-radius: 4px;
+}
+
+/* Cuando hay error, bordes rojos */
+.input-error input,
+.input-error .avatar {
+  border: 2px solid #ff0000 !important;
+  border-radius: 4px;
 }

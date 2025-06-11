@@ -152,6 +152,8 @@ export class ReportsComponent implements OnInit {
     this.selectedConcept = null;
     this.filteredReports = [...this.data];
     this.updateAvailableConcepts();
+    this.currentPage = 1;
+    this.updatePagination();
   }
 
   onSearchTermChange(value: string) {

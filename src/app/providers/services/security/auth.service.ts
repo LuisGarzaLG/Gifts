@@ -5,7 +5,8 @@ import { BehaviorSubject } from "rxjs";
 import Swal from 'sweetalert2';
 import { ApiService } from "../api.provider"; 
 import { ToastrProvider } from "../../toastr/toastr-service";
-import { TokenStorageService } from "./token-storage.service"; 
+import { TokenStorageService } from "./token-storage.service";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,8 @@ export class AuthService extends BaseProvider {
   constructor(
     baseService: ApiService,
     toastService: ToastrProvider,
-    tokenStorageService: TokenStorageService
+    tokenStorageService: TokenStorageService,
+    private router: Router
   ) {
     super(baseService, toastService, tokenStorageService);
   }
@@ -52,7 +54,12 @@ export class AuthService extends BaseProvider {
             icon: 'error',
             title: `<div class="text-dark"> ${response.error.detail} </div>`,
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            background: '#333',
+            color: '#fff',
+            customClass: {
+              title: 'custom-toast-title'
+            }
           });
           return false;
         }
@@ -68,45 +75,56 @@ export class AuthService extends BaseProvider {
     let primaryRoles: string[] = JSON.parse(sessionStorage.getItem('roles') || '[]');
 
     // Agregar roles solo si no están ya presentes
-    if (rolesFromToken.includes("BulletinQA") && !primaryRoles.includes("BulletinQA")) {
-        primaryRoles.push("BulletinQA");
+    if (rolesFromToken.includes("HR") && !primaryRoles.includes("HR")) {
+        primaryRoles.push("HR");
     }
-    if (rolesFromToken.includes("BULLETINPROD") && !primaryRoles.includes("BULLETINPROD")) {
-      primaryRoles.push("BULLETINPROD");
-  }
+
     sessionStorage.setItem('roles', JSON.stringify(primaryRoles));
     this.rolesSubject.next(primaryRoles);
-}
-
-private updateSessionRoles(roles: string[]): void {
-  sessionStorage.setItem('roles', JSON.stringify(roles));
-  this.rolesSubject.next(roles);
-}
-
-
-  public async GetNewToken() {
-    return await this.service
-      .RefreshToken<HttpResponse<any>>(this.endPoint)
-      .then((response) => {
-        if (response.status >= 200 && response.status <= 299) {
-          this.tokenStorageService.saveToken(response.body);
-          return true;
-        }
-
-        if (response.status >= 400 || response.status <= 499) {
-          Swal.fire({
-            icon: 'error',
-            title: `<div class="text-dark"> ${response.error.detail} </div>`,
-            showConfirmButton: false,
-            timer: 1500
-          });
-          return false;
-        }
-
-        this.toastProvider.Danger('Error ha sido lanzado');
-        return false;
-      });
   }
+
+  private updateSessionRoles(roles: string[]): void {
+    sessionStorage.setItem('roles', JSON.stringify(roles));
+    this.rolesSubject.next(roles);
+  }
+
+
+ public async GetNewToken() {
+  return await this.service
+    .RefreshToken<HttpResponse<any>>(this.endPoint)
+    .then((response) => {
+      if (response.status >= 200 && response.status <= 299) {
+        this.tokenStorageService.saveToken(response.body);
+        return true;
+      }
+
+      if (response.status >= 400 || response.status <= 499) {
+        Swal.fire({
+          icon: 'error',
+          title: `<div class="text-dark"> ${response.error.detail} </div>`,
+          showConfirmButton: false,
+          timer: 1500,
+          background: '#333',
+          color: '#fff',
+          customClass: { title: 'custom-toast-title' }
+        });
+        this.logout();  // limpia la sesión
+        this.router.navigate(['/auth/login']); // redirige al login
+        return false;
+      }
+
+      this.toastProvider.Danger('Error ha sido lanzado');
+      this.logout();
+      this.router.navigate(['/auth/login']);
+      return false;
+    })
+    .catch((error) => {
+      this.logout();
+      this.router.navigate(['/auth/login']);
+      return false;
+    });
+}
+
 
   IsLoggedIn(): boolean {
     return !!sessionStorage.getItem('token');
@@ -120,7 +138,12 @@ private updateSessionRoles(roles: string[]): void {
         icon: 'error',
         title: `<div class="text-dark"> No se encontró el nombre de usuario en sessionStorage. </div>`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
+        background: '#333',
+        color: '#fff',
+        customClass: {
+          title: 'custom-toast-title'
+        }
       });
       return false;
     }
@@ -143,7 +166,12 @@ private updateSessionRoles(roles: string[]): void {
               icon: 'error',
               title: `<div class="text-dark"> No se pudo obtener el normalizedUserName. </div>`,
               showConfirmButton: false,
-              timer: 1500
+              timer: 1500,
+              background: '#333',
+              color: '#fff',
+              customClass: {
+                title: 'custom-toast-title'
+              }
             });
             return false;
           }
@@ -154,7 +182,12 @@ private updateSessionRoles(roles: string[]): void {
             icon: 'error',
             title: `<div class="text-dark"> ${response.error.detail} </div>`,
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            background: '#333',
+            color: '#fff',
+            customClass: {
+              title: 'custom-toast-title'
+            }
           });
           return false;
         }
@@ -206,7 +239,12 @@ private updateSessionRoles(roles: string[]): void {
         icon: 'error',
         title: `<div class="text-dark"> No se proporcionó el username para buscar el correo. </div>`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
+        background: '#333',
+        color: '#fff',
+        customClass: {
+          title: 'custom-toast-title'
+        }
       });
       return null;
     }
@@ -226,7 +264,12 @@ private updateSessionRoles(roles: string[]): void {
               icon: 'error',
               title: `<div class="text-dark"> No se encontró el correo para el usuario ${userName}. </div>`,
               showConfirmButton: false,
-              timer: 1500
+              timer: 1500,
+              background: '#333',
+              color: '#fff',
+              customClass: {
+                title: 'custom-toast-title'
+              }
             });
             return null;
           }
@@ -237,7 +280,12 @@ private updateSessionRoles(roles: string[]): void {
             icon: 'error',
             title: `<div class="text-dark"> ${response.error.detail} </div>`,
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            background: '#333',
+            color: '#fff',
+            customClass: {
+              title: 'custom-toast-title'
+            }
           });
           return null;
         }
@@ -250,9 +298,16 @@ private updateSessionRoles(roles: string[]): void {
           icon: 'error',
           title: `<div class="text-dark"> Error al intentar obtener el correo del usuario ${userName}. </div>`,
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
+          background: '#333',
+          color: '#fff',
+          customClass: {
+            title: 'custom-toast-title'
+          }
         });
         return null;
       });
   }
+
+  
 }

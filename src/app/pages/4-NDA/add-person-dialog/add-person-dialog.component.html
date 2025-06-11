@@ -1,0 +1,22 @@
+<form [formGroup]="companyForm" (ngSubmit)="submit()" class="company-form">
+  <nb-card class="company-card">
+    <nb-card-header class="company-card-header">
+      {{ isEditing ? 'Edit company people' : 'Create company people' }}
+    </nb-card-header>
+    <nb-card-body class="company-card-body">
+      <label for="companyName" class="company-label">Person Name:</label>
+      <input id="companyName" nbInput fullWidth formControlName="name" placeholder="Person Name" class="company-input" />
+
+      <label for="companyid" class="company-label">Company</label>
+      <select id="companyid" class="company-input" formControlName="companyid">
+        <option *ngFor="let company of companies" [value]="company.id">
+          {{ company.name }}
+        </option>
+      </select>
+    </nb-card-body>
+    <nb-card-footer class="company-card-footer d-flex justify-content-end">
+      <button nbButton status="primary" type="submit" class="btn-save">Save</button>
+      <button nbButton status="danger" type="button" (click)="cancel()" class="btn-cancel">Cancel</button>
+    </nb-card-footer>
+  </nb-card>
+</form>

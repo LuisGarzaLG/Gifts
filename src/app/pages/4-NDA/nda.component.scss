@@ -1,6 +1,6 @@
 /* === Estilo general de la tarjeta principal === */
 .card {
-  border-top: 5px solid #d3d02f;
+  border-top: 5px solid #dd2;
   border-radius: 25px;
   background-color: #ffffff;
   box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
@@ -109,7 +109,7 @@ select:focus {
 }
 
 .table thead th {
-  background-color: #d32f2f;
+  background-color: #da2;
   color: #fff;
   padding: 14px;
   font-size: 1.1rem;
@@ -139,11 +139,11 @@ nb-card-body p {
 }
 
 .card-purple nb-card-header {
-  background-color: #8e24aa !important;
+  background-color: #da2 !important;
 }
 
 .card-teal nb-card-header {
-  background-color: #00796b !important;
+  background-color: #da2 !important;
 }
 
 

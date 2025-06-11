@@ -1,22 +1,23 @@
 import { Injectable } from "@angular/core";
 import { BaseProvider } from "../base.provider";
-import { BehaviorSubject } from "rxjs";
-import { HttpResponse } from "@angular/common/http";
+import { BehaviorSubject, Observable } from "rxjs";
+import { HttpResponse, HttpParams } from "@angular/common/http";
 import { NotificationService } from "../notification/notification.service";
 import { ApiService } from "../api.provider";
 import { ToastrProvider } from "../../toastr/toastr-service";
 import { TokenStorageService } from "../security/token-storage.service";
-import { Concept, Employee, Report } from "../../models/gifts-request-all-models";
+import { Concept, Employee, Report, Companies, CompaniesP } from "../../models/gifts-request-all-models";
 
 @Injectable({ providedIn: "root" })
 export class giftsrequestsprovaider extends BaseProvider {
+  // Declara tokenStorage como propiedad privada
   constructor(
     private notificationService: NotificationService,
     baseService: ApiService,
     toastService: ToastrProvider,
-    tokenStorageService: TokenStorageService
+    private tokenStorage: TokenStorageService // <-- aquí la inyección correcta
   ) {
-    super(baseService, toastService, tokenStorageService);
+    super(baseService, toastService, tokenStorage);
   }
 
   private endpointGetAllEmployees = '/api/gifts/getallemployees';
@@ -24,7 +25,70 @@ export class giftsrequestsprovaider extends BaseProvider {
   private endpointGetAllConcepts = '/api/gifts/getallconcepts';
   private endpointUpdateConcept = '/api/gifts/updateconcept';
   private endpointAddConcept = '/api/gifts/addconcept';
+  private endpointGetEMployees = '/api/employees';
+  private endpointCreateGifts = '/api/gifts/creategift';
+  private endpointGetAllComapnies = '/api/gifts/getallcompanies';
+  private endpointGetAllComapniesPeople = '/api/gifts/getallcompaniespeople';
+  private endpointUpdateCompanies = '/api/gifts/insertorupdatecompany';
+  private endpointUpdateCompaniesPeople = '/api/gifts/insertorupdatecompanypeople';
+  private endpointDeleteCompany = '/api/gifts/deletecomapany';
+  private endpointDeleteCompanyPeople = '/api/gifts/deletecomapanypeople';
 
+  public async GetAllCompanies(): Promise<Companies[]> {
+    return await this.service.Get<Companies[]>(this.endpointGetAllComapnies)
+      .then((data: HttpResponse<Companies[]>) => data.body || []);
+  }
+
+  public async GetAllCompaniesPeople(): Promise<CompaniesP[]> {
+    return await this.service.Get<CompaniesP[]>(this.endpointGetAllComapniesPeople)
+      .then((data: HttpResponse<CompaniesP[]>) => data.body || []);
+  }
+
+  public async InsertOrUpdateCompany(data: { id?: number; name: string; }): Promise<void> {
+  const currentUser = this.tokenStorage.getUser();
+
+  const userParam = encodeURIComponent(currentUser?.name || '');
+  
+  const idPart = data.id && data.id > 0 ? `Id=${data.id}&` : '';
+  const url = `${this.endpointUpdateCompanies}?${idPart}name=${encodeURIComponent(data.name)}&user=${userParam}`;
+  
+  await this.service.Post<void>(url, null);
+}
+
+  public async InsertOrUpdateCompanyPeople(data: { id?: number; name: string; companyid: number; }): Promise<void> {
+    const currentUser = this.tokenStorage.getUser();
+    const userParam = encodeURIComponent(currentUser?.name || '');
+    const idPart = data.id && data.id > 0 ? `Id=${data.id}&` : '';
+    const url = `${this.endpointUpdateCompaniesPeople}?${idPart}name=${encodeURIComponent(data.name)}&user=${userParam}&companyid=${data.companyid}`;
+    await this.service.Post<void>(url, null);
+  }
+ public async DeleteCompany(id: number): Promise<void> {
+  await this.service.Delete<void>(this.endpointDeleteCompany, id);
+}
+
+public async DeleteCompanyPeople(id: number): Promise<void> {
+  await this.service.Delete<void>(this.endpointDeleteCompanyPeople, id);
+}
+
+
+
+
+
+
+
+public async GetEmployeeById(employeeNumber: number): Promise<any> {
+  return await this.service.Get<any>(`${this.endpointGetEMployees}/${employeeNumber}`)
+    .then((data: HttpResponse<any>) => data?.body || null)
+    }
+
+public async CreateGift(employeeIds: string, conceptId: number, user: string): Promise<any> {
+  return await this.service.Post<any>(
+    `${this.endpointCreateGifts}/${encodeURIComponent(employeeIds)}/${conceptId}/${encodeURIComponent(user)}`,
+    null // sin body
+  ).then((data: HttpResponse<any>) => data?.body || null);
+}
+
+  
   public async GetAllEmployees(): Promise<Employee[]> {
     return await this.service.Get<Employee[]>(this.endpointGetAllEmployees)
       .then((data: HttpResponse<Employee[]>) => data.body || []);

@@ -2,14 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NdaComponent } from './nda.component';
-import { NbDatepickerModule,NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbSpinnerModule, NbTabsetModule, NbThemeModule, NbToastrModule, NbListModule, NbSelectModule, NbFormFieldModule } from '@nebular/theme';
+import { NbDatepickerModule,NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbSpinnerModule, NbTabsetModule, NbThemeModule, NbToastrModule, NbListModule, NbSelectModule, NbFormFieldModule, NbDialogModule } from '@nebular/theme';
+import { AddCompanyDialogComponent } from './add-company-dialog/add-company-dialog.component';
+import { AddPersonDialogComponent } from './add-person-dialog/add-person-dialog.component';
 
 
 
 
 @NgModule({
   declarations: [
-    NdaComponent
+    NdaComponent,
+    AddCompanyDialogComponent,
+    AddPersonDialogComponent
   ],
   imports: [
     FormsModule,
@@ -27,7 +31,8 @@ import { NbDatepickerModule,NbButtonModule, NbCardModule, NbIconModule, NbInputM
     NbIconModule,
     NbTabsetModule,
     NbSelectModule,
-    NbToastrModule.forRoot()
+    NbToastrModule.forRoot(),
+    NbDialogModule.forChild(),
   ]
 })
 export class NdaModule { }

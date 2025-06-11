@@ -7,6 +7,7 @@
 
   <nb-card-body>
     <nb-tabset>
+
       <!-- Companies Tab -->
       <nb-tab tabTitle="Companies">
         <nb-card class="card-section card-purple card1">
@@ -17,22 +18,20 @@
 
           <nb-card-body>
             <div class="top-controls">
-              <button nbButton status="primary" class="btn-1">+ Add company</button>
-              <button nbButton size="small" class="btn-1">Reload</button>
+              <button nbButton status="success" (click)="openAddCompanyDialog()">Add Company</button>
+              <button nbButton size="small" class="btn-1" (click)="loadCompanies()">Reload</button>
 
               <label class="s-e">
                 Show
-                <select>
-                  <option>10</option>
-                  <option>25</option>
-                  <option>50</option>
+                <select [(ngModel)]="entriesToShow">
+                  <option *ngFor="let opt of [10,25,50]">{{ opt }}</option>
                 </select>
                 entries
               </label>
 
               <div class="search-container">
                 <label class="label-inline">Search:</label>
-                <input class="input-inline" type="text" placeholder="Search..." />
+                <input class="input-inline" type="text" [(ngModel)]="searchCompanyText" placeholder="Search..." />
               </div>
             </div>
 
@@ -41,15 +40,24 @@
                 <thead>
                   <tr>
                     <th>Company Name</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="content-cell-1 no-data" colspan="1">No data available in table</td>
+                  <tr *ngFor="let company of companies">
+                    <td>{{ company.name }}</td>
+                    <td>
+                      <!-- Placeholder for actions (edit/delete) -->
+                      <button nbButton size="tiny" status="info" (click)="editCompany(company)">Edit</button>
+                      <button nbButton size="tiny" status="danger" (click)="deleteCompany(company.id)">Delete</button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="companies.length === 0">
+                    <td class="no-data" colspan="2">No data available in table</td>
                   </tr>
                 </tbody>
               </table>
-              <p>Showing 0 to 0 of 0 entries</p>
+              <p>Showing {{ companies.length }} of {{ totalCompanies }} entries</p>
             </div>
           </nb-card-body>
         </nb-card>
@@ -65,22 +73,20 @@
 
           <nb-card-body>
             <div class="top-controls">
-              <button nbButton status="info" class="btn-1">+ Add company people</button>
-              <button nbButton size="small" class="btn-1">Reload</button>
+              <button nbButton status="success" (click)="openAddPersonDialog()">Add Person</button>
+              <button nbButton size="small" class="btn-1" (click)="loadCompanyPeople()">Reload</button>
 
               <label class="s-e">
                 Show
-                <select>
-                  <option>10</option>
-                  <option>25</option>
-                  <option>50</option>
+                <select [(ngModel)]="entriesToShowPeople">
+                  <option *ngFor="let opt of [10,25,50]">{{ opt }}</option>
                 </select>
                 entries
               </label>
 
               <div class="search-container">
                 <label class="label-inline">Search:</label>
-                <input class="input-inline" type="text" placeholder="Search..." />
+                <input class="input-inline" type="text" [(ngModel)]="searchPeopleText" placeholder="Search..." />
               </div>
             </div>
 
@@ -90,19 +96,31 @@
                   <tr>
                     <th>Person Name</th>
                     <th>Company</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="content-cell-1 no-data" colspan="2">No data available in table</td>
+                  <tr *ngFor="let person of people">
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.companyName}}</td>
+                    <td>
+                      <button nbButton size="small" status="info" (click)="openAddPersonDialog(person)">Edit</button>
+                      <button nbButton size="tiny" status="danger" (click)="deletePerson(person.id)">Delete</button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="people.length === 0">
+                    <td class="no-data" colspan="3">No data available in table</td>
                   </tr>
                 </tbody>
               </table>
-              <p>Showing 0 to 0 of 0 entries</p>
+              <p>Showing {{ people.length }} of {{ totalPeople }} entries</p>
             </div>
           </nb-card-body>
         </nb-card>
       </nb-tab>
+
     </nb-tabset>
   </nb-card-body>
 </nb-card>
+
+

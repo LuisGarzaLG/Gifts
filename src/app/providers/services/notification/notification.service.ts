@@ -8,14 +8,37 @@ export class NotificationService {
     constructor() {}
 
     success(message: string, title: string = 'Éxito'): void {
+  Swal.fire({
+    icon: 'success',
+    title: title,
+    text: message,
+    timer: 3000,
+    showConfirmButton: false,
+    toast: true,
+    position: 'top-end',
+    background: '#333',
+    color: '#fff', // aplica al texto general
+    customClass: {
+      title: 'custom-toast-title'
+    }
+  });
+}
+
+    succes(message: string, title: string = 'Éxito'): void {
     Swal.fire({
         icon: 'success',
         title: title,
         text: message,
         timer: 3000,
+        timerProgressBar: true,
         showConfirmButton: false,
         toast: true,
-        position: 'top-end',
+        position: 'top-start',
+        background: '#333',
+        color: '#fff', // aplica al texto general
+        customClass: {
+        title: 'custom-toast-title'
+        }
     });
     }
 
@@ -25,6 +48,25 @@ export class NotificationService {
         title: title,
         text: message,
         showConfirmButton: false,
+        background: '#333',
+        color: '#fff', // aplica al texto general
+        customClass: {
+        title: 'custom-toast-title'
+        }
+    });
+    }
+    eror(message: string, title: string = 'Error'): void {
+    Swal.fire({
+        icon: 'error',
+        title: title,
+        text: message,
+        showConfirmButton: false,
+         timer: 3000,
+        background: '#333',
+        color: '#fff', // aplica al texto general
+        customClass: {
+        title: 'custom-toast-title'
+        }
     });
     }
 
@@ -37,6 +79,11 @@ export class NotificationService {
         showConfirmButton: false,
         toast: true,
         position: 'top-end',
+        background: '#333',
+        color: '#fff', // aplica al texto general
+        customClass: {
+        title: 'custom-toast-title'
+        }        
     });
     }
 
@@ -49,15 +96,20 @@ export class NotificationService {
         showConfirmButton: false,
         toast: true,
         position: 'top-end',
+        background: '#333',
+        color: '#fff', // aplica al texto general
+        customClass: {
+        title: 'custom-toast-title'
+        }
     });
     }
 
-    confirm(
+confirm(
     title: string,
     message: string,
     confirmButtonText: string = 'Confirmar',
     cancelButtonText: string = 'Cancelar'
-    ): Promise<boolean> {
+): Promise<boolean> {
     return Swal.fire({
         title,
         text: message,
@@ -65,6 +117,58 @@ export class NotificationService {
         showCancelButton: true,
         confirmButtonText,
         cancelButtonText,
+        background: '#333',
+        color: '#fff',
+        customClass: {
+            title: 'custom-toast-title'
+        }
     }).then((result) => result.isConfirmed);
+}
+
+
+// notification.service.ts
+confirmm(
+    title: string,
+    message: string,
+    confirmButtonText: string = 'Confirmar',
+    cancelButtonText: string = 'Cancelar'
+): Promise<boolean> {
+    return Swal.fire({
+        title,
+        text: message,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText,
+        cancelButtonText,
+        background: '#333',
+        color: '#fff',
+        customClass: {
+            title: 'custom-toast-title'
+        }
+    }).then((result) => result.isConfirmed);
+}
+
+
+confirmHtml(
+  title: string,
+  html: string,
+  confirmButtonText: string = 'Confirmar',
+  cancelButtonText: string = 'Cancelar'
+): Promise<boolean> {
+  return Swal.fire({
+    title,
+    html,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText,
+    cancelButtonText,
+    background: '#333',
+    color: '#fff',
+    customClass: {
+      title: 'custom-toast-title'
     }
+  }).then((result) => result.isConfirmed);
+}
+
+
 }

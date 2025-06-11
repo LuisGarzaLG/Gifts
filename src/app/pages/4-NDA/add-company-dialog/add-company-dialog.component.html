@@ -1,0 +1,13 @@
+<form [formGroup]="companyForm" (ngSubmit)="submit()" class="company-form">
+  <nb-card class="company-card">
+    <nb-card-header class="company-card-header">+ Add Company</nb-card-header>
+    <nb-card-body class="company-card-body">
+      <label for="companyName" class="company-label">Company Name:</label>
+      <input id="companyName" nbInput fullWidth formControlName="name" placeholder="Company Name"class="company-input" />
+    </nb-card-body>
+    <nb-card-footer class="company-card-footer d-flex justify-content-end">
+      <button nbButton status="primary" type="submit" [disabled]="companyForm.invalid" class="btn-save" > Save </button>
+      <button nbButton status="danger" type="button"(click)="cancel()"class="btn-cancel" >Cancel</button>
+    </nb-card-footer>
+  </nb-card>
+</form>

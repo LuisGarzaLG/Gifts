@@ -14,3 +14,14 @@
     padding: 0px;
     position: relative;
 }
+
+
+.custom-toast-title {
+  color: #ffcc00 !important;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+[_nghost-ttn-c142] nb-tab.content-active {
+    display: block;
+    padding: 0;}

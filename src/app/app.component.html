@@ -4,9 +4,17 @@
       <div class="header-left">
         <span class="header-title" (click)="toggleSidebar()">E-RH</span>
         <img [src]="logo" alt="Landis+Gyr" class="img-logo" (click)="navigateToEmployees()" />
-
-      </div>
+      </div>  
     </div>
+    <nb-actions size="medium" class="user-actions">
+      <nb-action>
+        <span>{{ currentUserName }}</span>
+      </nb-action>
+        <nb-action (click)="onUserIconClick()">
+          <nb-icon [icon]="isAuthenticated ? 'person-outline' : 'person-outline'" [style.color]="'white'"></nb-icon>
+        </nb-action>
+
+    </nb-actions>
   </nb-layout-header>
 
   <nb-sidebar tag="menu-sidebar" [state]="isSidebarExpanded ? 'expanded' : 'collapsed'" class="custom-sidebar">

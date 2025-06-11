@@ -36,4 +36,18 @@ export class TokenStorageService {
   public getUserRoles(): string[] {
     return this.CurrentUser?.Roles || [];
   }
+
+  public getUser(): UserDetails | null {
+    if (this.CurrentUser) {
+      return this.CurrentUser;
+    }
+    const userJson = window.sessionStorage.getItem('currentUser');
+    if (userJson) {
+      this.CurrentUser = JSON.parse(userJson);
+      return this.CurrentUser;
+    }
+    return null;
+  }
+
+  
 }

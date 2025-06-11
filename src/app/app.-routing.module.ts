@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NbAuthComponent, NbLogoutComponent, NbRegisterComponent, NbRequestPasswordComponent, NbResetPasswordComponent } from '@nebular/auth';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'pages', pathMatch: 'full'},
@@ -8,6 +9,7 @@ const routes: Routes = [
     path:'auth',
     component: NbAuthComponent,
     children: [
+      { path: 'login', component: LoginComponent},
       { path: 'register', component: NbRegisterComponent },
       { path: 'logout', component: NbLogoutComponent },
       { path: 'request-password', component: NbRequestPasswordComponent },

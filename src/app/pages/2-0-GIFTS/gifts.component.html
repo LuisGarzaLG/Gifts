@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <nb-card  class="card">
   <nb-card-header class="card-title header-flex">
     <div class="title-text">GIFTS</div>
@@ -10,7 +12,7 @@
     </div>
   </nb-card-header>
   <nb-card-body>
-    <div class="grid-container">
+    <div class="grid-container" [ngClass]="employeeInputClass">
       <!-- Imagen del empleado -->
       <div class="image-container">
         <img [src]="employeePhoto" alt="Foto del empleado" class="avatar" />
@@ -18,39 +20,46 @@
 
       <!-- EmployeeID -->
       <div class="form-group">
-        <label>EmployeeId</label>
-        <input nbInput placeholder="Escanear el número de empleado" fullWidth [(ngModel)]="employeeId" (input)="loadEmployeeData()" />
-      </div>
+    <label>
+      <i class="fa-solid fa-id-badge"></i> EmployeeId
+    </label>
+    <input nbInput fullWidth [ngModel]="employeeNumber" (ngModelChange)="onEmployeeNumberChange($event)">
+  </div>
+
 
       <!-- Nombre -->
       <div class="form-group-1">
-        <label>Nombre del empleado</label>
+        <label> ✔ Employee Name</label>
         <input nbInput fullWidth [value]="employeeName" disabled />
       </div>
 
       <!-- Supervisor -->
       <div class="form-group-1">
-        <label>Supervisor</label>
+        <label>✔ Supervisor</label>
         <input nbInput fullWidth [value]="supervisor" disabled />
       </div>
 
       <!-- Área -->
       <div class="form-group-1">
-        <label>Área</label>
+        <label>✔ Area</label>
         <input nbInput fullWidth [value]="area" disabled />
       </div>
 
       <!-- Tamaño -->
       <div class="form-group-1">
-        <label>Tamaño</label>
+        <label>✔ Size</label>
         <input nbInput fullWidth [value]="size" disabled />
       </div>
 
       <!-- Turno -->
       <div class="form-group-1">
-        <label>Turno</label>
+        <label>✔ Shift</label>
         <input nbInput fullWidth [value]="shift" disabled />
       </div>
+    </div>
+    <div>
+      <button nbButton status="success" (click)="createGift()" class="btn--add">ADD</button>
+
     </div>
   </nb-card-body>
 </nb-card>

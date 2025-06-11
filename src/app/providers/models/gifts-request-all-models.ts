@@ -30,3 +30,28 @@ export interface Report{
   
 }
 
+
+export interface Gift {
+  id: number;
+  name: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  lastDate: string;
+  conceptId: string |null
+}
+
+
+export interface Companies{
+  id: number;
+  name: string;
+  lastDate: Date | null;
+  lastUser: string;
+}
+export interface CompaniesP {
+  id: number;
+  name: string;
+  companyId: number;
+  companyName: string;
+}
+
