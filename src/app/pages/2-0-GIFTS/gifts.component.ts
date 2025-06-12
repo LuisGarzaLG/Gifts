@@ -65,14 +65,33 @@ export class GiftsComponent implements OnInit {
   });
 }
 
+updateEmployeePhoto(employeeId: string) {
+  if (!employeeId || employeeId.trim() === '') {
+    this.employeePhoto = ''; // Limpia la imagen si el campo está vacío
+    return;
+  }
+
+  const baseUrl = 'https://mxrexvs36/SpartaVFiles/Raidenm/FotosGifts/';
+  const pngUrl = `${baseUrl}${employeeId}.png`;
+  const jpgUrl = `${baseUrl}${employeeId}.jpg`;
+
+  // Primero intenta cargar la imagen PNG, si falla intenta JPG
+  const img = new Image();
+  img.onload = () => this.employeePhoto = pngUrl;
+  img.onerror = () => this.employeePhoto = jpgUrl;
+  img.src = pngUrl;
+}
+
 
   onEmployeeNumberChange(value: string) {
-    this.employeeNumberChanged.next(value);
+  this.employeeNumberChanged.next(value);
+  this.updateEmployeePhoto(value); // << Aquí se actualiza la imagen
 
-    if (!value.trim()) {
-      this.resetEmployeeData();
-    }
+  if (!value.trim()) {
+    this.resetEmployeeData();
   }
+}
+
 
   async loadConcepts() {
   try {
@@ -94,37 +113,65 @@ export class GiftsComponent implements OnInit {
 }
 
 
-  async loadEmployeeData(): Promise<void> {
-    const employeeNumber = parseInt(this.employeeNumber, 10);
-    if (isNaN(employeeNumber)) return;
+ async loadEmployeeData(): Promise<void> {
+  const employeeNumber = parseInt(this.employeeNumber, 10);
+  if (isNaN(employeeNumber)) return;
 
-    try {
-      const employee = await this.giftsRequestProvider.GetEmployeeById(employeeNumber);
-      if (!employee) {
-        this.notificationService.warning('Empleado no encontrado. Verifica el número e intenta de nuevo.');
-        return;
-      }
-
-      this.employeeName = employee.fullName;
-      this.supervisor = employee.supervisorName;
-      this.area = employee.area;
-      this.shift = employee.shiftDescription;
-      //this.size = employee.shiftId;
-
-      this.newGift = {
-        id: 0,
-        name: employee.fullName,
-        description: `Reconocimiento por desempeño en ${employee.area}`,
-        startDate: new Date().toISOString(),
-        endDate: new Date().toISOString(),
-        lastDate: new Date().toISOString(),
-        conceptId: this.selectedConceptId !== null ? this.selectedConceptId.toString() : null
-      };
-    } catch (error) {
-      console.error('Error al cargar los datos del empleado:', error);
-      this.notificationService.error('Error al cargar datos del empleado.');
+  try {
+    const employee = await this.giftsRequestProvider.GetEmployeeById(employeeNumber);
+    if (!employee) {
+      this.notificationService.warning('Empleado no encontrado. Verifica el número e intenta de nuevo.');
+      return;
     }
+
+    this.employeeName = employee.fullName;
+    this.supervisor = employee.supervisorName;
+    this.area = employee.area;
+    this.shift = employee.shiftDescription;
+
+    this.newGift = {
+      id: 0,
+      name: employee.fullName,
+      description: `Reconocimiento por desempeño en ${employee.area}`,
+      startDate: new Date().toISOString(),
+      endDate: new Date().toISOString(),
+      lastDate: new Date().toISOString(),
+      conceptId: this.selectedConceptId !== null ? this.selectedConceptId.toString() : null
+    };
+
+    // Cargar imagen del empleado
+    const baseUrl = 'https://mxrexvs36/SpartaVFiles/Raidenm/FotosGifts/';
+    const pngUrl = `${baseUrl}${employeeNumber}.png`;
+    const jpgUrl = `${baseUrl}${employeeNumber}.jpg`;
+
+    // Intentar con PNG primero
+    this.checkImage(pngUrl).then(
+      () => this.employeePhoto = pngUrl,
+      () => {
+        // Si falla, intentar con JPG
+        this.checkImage(jpgUrl).then(
+          () => this.employeePhoto = jpgUrl,
+          () => this.employeePhoto = '' // Si no hay imagen, dejar vacío
+        );
+      }
+    );
+
+  } catch (error) {
+    console.error('Error al cargar los datos del empleado:', error);
+    this.notificationService.error('Error al cargar datos del empleado.');
   }
+}
+
+// Método auxiliar para verificar si la imagen existe
+checkImage(url: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve();
+    img.onerror = () => reject();
+    img.src = url;
+  });
+}
+
 
   resetEmployeeData() {
     this.employeeNumber = '';

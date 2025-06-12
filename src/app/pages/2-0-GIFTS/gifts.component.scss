@@ -81,14 +81,15 @@
 }
 
 .avatar {
-  width: 100%;
-  min-width: 180px;
-  height: 180px;
-  object-fit: contain;
-  border-radius: 8px;
-  padding: 2px;
-  border: 1px solid transparent;
+    width: 100%;
+    min-width: 180px;
+    height: 215px;
+    object-fit: fill;
+    border-radius: 8px;
+    padding: 2px;
+    border: 1px solid transparent;
 }
+
 
 .inp-inf {
   padding: 10px 12px;

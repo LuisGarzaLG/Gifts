@@ -50,6 +50,7 @@ this.rolesSubscription = this.authService.getRolesObservable().subscribe((curren
           title: 'EMPLOYEES',
           icon: 'people-outline',
           link: '/pages/employees',
+          roles: ['HR']
         },
         {
           title: 'GIFTS',
@@ -59,11 +60,13 @@ this.rolesSubscription = this.authService.getRolesObservable().subscribe((curren
             title: 'GIFT',
             icon: 'gift-outline',
             link: '/pages/gifts',
+            roles: ['HR']
           },
           {
             title: 'CONCEPTS',
             icon: 'file-add-outline',
             link: '/pages/concepts',
+            roles: ['HR']
           },
           
           ]
@@ -71,12 +74,14 @@ this.rolesSubscription = this.authService.getRolesObservable().subscribe((curren
         {
           title: 'REPORT',
           icon: 'file-text-outline',
-          link: '/pages/reports'
+          link: '/pages/reports',
+          roles: ['HR']
         },
         {
           title: 'NDA',
           icon: 'folder-add-outline',
-          link: '/pages/nda'
+          link: '/pages/nda',
+          roles: ['HR']
         },
       ];
     this.menuItems = this.filterMenuItemsByRoles(this.menuItems);
